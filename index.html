@@ -7,605 +7,329 @@
 <meta name="description" content="A curated Sunday movement for women who walk, connect, and slow down together." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
 <style>
-/* ── Reset ─────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════ RESET */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-/* ── Design Tokens ─────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════ TOKENS */
 :root {
-  --cream:          #F6F2EA;
-  --cream-dark:     #EDE6D9;
-  --cream-border:   #DDD5C6;
-  --pink:           #F4A6B5;
-  --pink-deep:      #E78DA4;
-  --pink-muted:     #F9D0D9;
-  --sage:           #B8C7B1;
-  --charcoal:       #1C1A19;
-  --charcoal-mid:   #5A5550;
-  --charcoal-light: #9A9088;
-  --serif:          'Cormorant Garamond', Georgia, serif;
-  --sans:           'DM Sans', system-ui, sans-serif;
-  --ease:           cubic-bezier(0.16, 1, 0.3, 1);
-  --px:             clamp(1.5rem, 6vw, 5rem);
+  --cream:           #F7F3EB;
+  --cream-dark:      #EFE9DC;
+  --cream-mid:       #E6DDD0;
+  --cream-border:    #DDD3C1;
+  --cream-border-xl: #C8BAA6;
+
+  /* ACCENT: rosa claro — sin azul en ningún lugar */
+  --pink:            #EFA0B0;
+  --pink-deep:       #D47A93;
+  --pink-muted:      #F7CEDB;
+  --pink-wash:       rgba(239,160,176,0.07);
+
+  --charcoal:        #231F1C;
+  --charcoal-mid:    #5D5750;
+  --charcoal-light:  #9B9188;
+  --charcoal-ghost:  rgba(35,31,28,0.05);
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+
+  --section-v: clamp(6rem, 12vw, 10rem);
+  --px:  clamp(1.75rem, 7vw, 6rem);
+  --max: 1240px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-body {
-  background: var(--cream);
-  color: var(--charcoal);
-  font-family: var(--sans);
-  font-weight: 300;
-  line-height: 1.7;
+body { background: var(--cream); color: var(--charcoal); font-family: var(--sans); font-weight: 300; line-height: 1.75; }
+::selection { background: rgba(239,160,176,0.22); color: var(--charcoal); }
+
+/* ══════════════════════════════════════════════════════════ TYPOGRAPHY */
+.display { font-family: var(--serif); font-size: clamp(5rem, 13vw, 13rem); line-height: 0.91; letter-spacing: -0.03em; font-weight: 300; color: var(--charcoal); }
+.h1 { font-family: var(--serif); font-size: clamp(3rem, 6.5vw, 7.5rem); line-height: 1.0; letter-spacing: -0.02em; font-weight: 300; }
+.h2 { font-family: var(--serif); font-size: clamp(2.25rem, 4.5vw, 4.75rem); line-height: 1.07; letter-spacing: -0.015em; font-weight: 400; }
+.h3 { font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2.75rem); line-height: 1.18; font-weight: 400; letter-spacing: -0.01em; }
+.body-lg { font-family: var(--sans); font-size: clamp(1.0625rem, 1.6vw, 1.25rem); line-height: 1.82; font-weight: 300; color: var(--charcoal-mid); }
+.body { font-family: var(--sans); font-size: 1rem; line-height: 1.78; font-weight: 300; color: var(--charcoal-mid); }
+.label { font-family: var(--sans); font-size: 0.67rem; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: var(--charcoal-light); margin-bottom: 1.75rem; display: block; }
+em { font-style: italic; }
+
+/* ══════════════════════════════════════════════════════════ LAYOUT */
+.section { padding: var(--section-v) var(--px); }
+.inner { max-width: var(--max); margin: 0 auto; }
+.line-accent { display: block; width: 2rem; height: 1px; background: linear-gradient(90deg, var(--pink-deep), transparent); margin-bottom: 2rem; }
+.divider { height: 1px; background: linear-gradient(90deg, transparent 0%, var(--cream-border) 15%, var(--cream-border) 85%, transparent 100%); }
+.grid-2   { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(3.5rem, 7vw, 7rem); align-items: start; }
+.grid-3   { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.75rem; }
+.grid-4   { display: grid; grid-template-columns: repeat(4,1fr); gap: 2.5rem; }
+.grid-2x2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.875rem; }
+
+/* ══════════════════════════════════════════════════════════ LANGUAGE SELECTOR */
+.lang-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--charcoal);
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: 0.25rem; padding: 0.5rem var(--px);
+  border-bottom: 1px solid rgba(221,211,193,0.08);
 }
+.lang-btn {
+  font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(155,145,136,0.6); background: transparent;
+  border: 1px solid transparent; border-radius: 2px;
+  padding: 0.3rem 0.65rem; cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+.lang-btn:hover { color: rgba(247,243,235,0.8); border-color: rgba(221,211,193,0.2); }
+/* ACCENT: rosa para idioma activo */
+.lang-btn.active { color: var(--cream); border-color: rgba(239,160,176,0.4); background: rgba(239,160,176,0.1); }
+.lang-sep { width: 1px; height: 0.875rem; background: rgba(221,211,193,0.12); flex-shrink: 0; }
 
-::selection { background: var(--pink-muted); color: var(--charcoal); }
-
-/* ── Header ────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════ HEADER */
 header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(246,242,234,0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--cream-border);
+  position: fixed; top: 36px; left: 0; right: 0; z-index: 100;
+  background: rgba(247,243,235,0.93);
+  backdrop-filter: blur(20px) saturate(1.15);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  border-bottom: 1px solid rgba(221,211,193,0.55);
 }
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem var(--px);
-  max-width: 1280px;
-  margin: 0 auto;
-}
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.375rem var(--px); max-width: var(--max); margin: 0 auto; }
 .wordmark { text-decoration: none; }
-.wordmark-title {
-  display: block;
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--charcoal);
-  line-height: 1.2;
-}
-.wordmark-sub {
-  display: block;
-  font-size: 0.6rem;
-  font-family: var(--sans);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--charcoal-light);
-}
-.nav-desktop { display: flex; align-items: center; gap: 2.5rem; }
-.nav-link {
-  position: relative;
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--charcoal-mid);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 1px;
-  background: var(--pink-deep);
-  transition: width 0.3s var(--ease);
-}
+.wordmark-title { display: block; font-family: var(--serif); font-size: 1.45rem; font-weight: 400; letter-spacing: -0.01em; color: var(--charcoal); line-height: 1.15; }
+.wordmark-sub   { display: block; font-size: 0.58rem; font-family: var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--charcoal-light); margin-top: 0.1rem; }
+.nav-desktop { display: flex; align-items: center; gap: 2.75rem; }
+.nav-link { position: relative; font-family: var(--sans); font-size: 0.74rem; font-weight: 400; letter-spacing: 0.13em; text-transform: uppercase; color: var(--charcoal-mid); text-decoration: none; transition: color 0.25s ease; }
+.nav-link::after { content: ''; position: absolute; bottom: -3px; left: 50%; width: 0; height: 1px; background: var(--pink-deep); transform: translateX(-50%); transition: width 0.35s var(--ease); }
 .nav-link:hover { color: var(--charcoal); }
 .nav-link:hover::after { width: 100%; }
 
-/* ── Buttons ───────────────────────────────────────────────── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--cream);
-  background: var(--charcoal);
-  border: 1px solid var(--charcoal);
-  padding: 0.85rem 2rem;
-  border-radius: 2px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 8px rgba(28,26,25,0.1);
-  white-space: nowrap;
+/* ══════════════════════════════════════════════════════════ BUTTONS */
+.btn-primary, .btn-outline, .btn-pink {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none;
+  cursor: pointer; white-space: nowrap; border-radius: 3px; padding: 0.95rem 2.25rem;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
-.btn-primary:hover {
-  background: var(--charcoal-mid);
-  box-shadow: 0 4px 16px rgba(28,26,25,0.18);
-}
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--charcoal);
-  background: transparent;
-  border: 1px solid var(--cream-border);
-  padding: 0.85rem 2rem;
-  border-radius: 2px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-.btn-outline:hover {
-  border-color: var(--charcoal);
-  background: rgba(28,26,25,0.04);
-}
-.btn-pink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--charcoal);
-  background: var(--pink-muted);
-  border: 1px solid var(--pink);
-  padding: 0.85rem 2rem;
-  border-radius: 2px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-.btn-pink:hover { background: var(--pink); border-color: var(--pink-deep); }
+.btn-primary { color: var(--cream); background: var(--charcoal); border: 1px solid var(--charcoal); box-shadow: 0 2px 8px rgba(35,31,28,0.14), 0 1px 2px rgba(35,31,28,0.08); }
+.btn-primary:hover { background: #3A3530; box-shadow: 0 6px 20px rgba(35,31,28,0.2); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-outline { color: var(--charcoal-mid); background: transparent; border: 1px solid var(--cream-border); }
+.btn-outline:hover { border-color: var(--charcoal-mid); color: var(--charcoal); background: var(--charcoal-ghost); }
+.btn-pink { color: var(--charcoal); background: rgba(239,160,176,0.12); border: 1px solid rgba(239,160,176,0.45); }
+.btn-pink:hover { background: rgba(239,160,176,0.28); border-color: var(--pink-deep); box-shadow: 0 4px 16px rgba(212,122,147,0.18); }
 
-/* ── Section layout ────────────────────────────────────────── */
-.section {
-  padding: clamp(5rem, 10vw, 9rem) var(--px);
-}
-.inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.label {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--charcoal-light);
-  margin-bottom: 1.5rem;
-  display: block;
-}
-.line-accent {
-  display: block;
-  width: 2.5rem;
-  height: 1px;
-  background: var(--pink-deep);
-  margin-bottom: 1.5rem;
-}
-.divider {
-  height: 1px;
-  background: var(--cream-border);
-}
+/* ══════════════════════════════════════════════════════════ HERO */
+.hero-section { padding-top: clamp(10rem, 20vw, 18rem); padding-bottom: clamp(8rem, 16vw, 14rem); padding-left: var(--px); padding-right: var(--px); position: relative; overflow: hidden; }
+.hero-orb { position: absolute; top: -22%; right: -8%; width: clamp(420px, 58vw, 820px); height: clamp(420px, 58vw, 820px); border-radius: 50%; background: radial-gradient(circle at 38% 38%, rgba(239,160,176,0.11) 0%, rgba(239,160,176,0.04) 45%, transparent 68%); pointer-events: none; animation: orbDrift 10s ease-in-out infinite; }
+.hero-orb-2 { position: absolute; bottom: -18%; left: -6%; width: clamp(240px, 32vw, 480px); height: clamp(240px, 32vw, 480px); border-radius: 50%; background: radial-gradient(circle, rgba(181,196,175,0.07) 0%, transparent 70%); pointer-events: none; animation: orbDrift 14s ease-in-out infinite reverse; }
+@keyframes orbDrift { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-24px) scale(1.025); } }
+.hero-cta { display: flex; flex-direction: column; gap: 0.875rem; }
+.hero-bottom { margin-top: clamp(6rem, 12vw, 9rem); display: flex; align-items: center; gap: 1rem; }
 
-/* ── Typography ────────────────────────────────────────────── */
-.display {
-  font-family: var(--serif);
-  font-size: clamp(4rem, 10vw, 10.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.025em;
-  font-weight: 300;
-  color: var(--charcoal);
-}
-.h1 {
-  font-family: var(--serif);
-  font-size: clamp(2.5rem, 5.5vw, 6rem);
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-  font-weight: 300;
-}
-.h2 {
-  font-family: var(--serif);
-  font-size: clamp(1.75rem, 3.5vw, 3.75rem);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  font-weight: 400;
-}
-.h3 {
-  font-family: var(--serif);
-  font-size: clamp(1.4rem, 2.5vw, 2.5rem);
-  line-height: 1.2;
-  font-weight: 400;
-}
-.body-lg {
-  font-family: var(--sans);
-  font-size: clamp(1.0625rem, 1.5vw, 1.2rem);
-  line-height: 1.75;
-  font-weight: 300;
-  color: var(--charcoal-mid);
-}
-.body {
-  font-family: var(--sans);
-  font-size: 1rem;
-  line-height: 1.7;
-  font-weight: 300;
-  color: var(--charcoal-mid);
-}
-em { font-style: italic; }
+/* ══════════════════════════════════════════════════════════ CARDS */
+.card { background: rgba(247,243,235,0.65); border: 1px solid rgba(221,211,193,0.55); border-radius: 6px; padding: 3rem; transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease; }
+.card:hover { border-color: rgba(239,160,176,0.45); box-shadow: 0 10px 36px rgba(239,160,176,0.09), 0 2px 8px rgba(35,31,28,0.04); transform: translateY(-3px); }
+.card-tag { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.25rem; }
+.status-badge { font-size: 0.64rem; letter-spacing: 0.13em; text-transform: uppercase; padding: 0.3rem 0.875rem; border-radius: 3px; font-family: var(--sans); font-weight: 400; }
 
-/* ── Grid helpers ──────────────────────────────────────────── */
-.grid-2 { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-.grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+/* ══════════════════════════════════════════════════════════ STATS */
+.stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--cream-border); }
+.stat-num { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 300; color: var(--charcoal); line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.025em; }
+.stat-label { font-size: 0.69rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--charcoal-light); line-height: 1.65; }
 
-/* ── Hero ──────────────────────────────────────────────────── */
-#hero {
-  padding-top: clamp(9rem, 18vw, 16rem);
-  padding-bottom: clamp(7rem, 14vw, 13rem);
-  padding-left: var(--px);
-  padding-right: var(--px);
-  position: relative;
-  overflow: hidden;
-}
-.hero-orb {
-  position: absolute;
-  top: -20%; right: -10%;
-  width: clamp(300px, 50vw, 700px);
-  height: clamp(300px, 50vw, 700px);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(244,166,181,0.10) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-cta { display: flex; flex-direction: column; gap: 1rem; }
-.hero-bottom {
-  margin-top: clamp(5rem, 10vw, 8rem);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* ── Cards ─────────────────────────────────────────────────── */
-.card {
-  background: var(--cream-dark);
-  border: 1px solid var(--cream-border);
-  border-radius: 4px;
-  padding: 2.5rem;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.card:hover {
-  border-color: var(--pink);
-  box-shadow: 0 4px 24px rgba(244,166,181,0.12);
-}
-.card-tag {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-.status-badge {
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.75rem;
-  border-radius: 2px;
-  font-family: var(--sans);
-}
-
-/* ── Timeline ──────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════ TIMELINE */
 .timeline { position: relative; }
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 6.5rem;
-  width: 1px;
-  background: var(--cream-border);
-}
-.timeline-item {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 3rem;
-  align-items: start;
-  padding-bottom: clamp(2.5rem, 5vw, 4rem);
-  position: relative;
-}
+.timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 7rem; width: 1px; background: linear-gradient(to bottom, transparent 0%, var(--cream-border) 8%, var(--cream-border) 92%, transparent 100%); }
+.timeline-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 3.5rem; align-items: start; padding-bottom: clamp(3.25rem, 6vw, 5rem); position: relative; }
 .timeline-item:last-child { padding-bottom: 0; }
-.timeline-time {
-  text-align: right;
-  padding-right: 2rem;
-  position: relative;
-  z-index: 1;
-  font-family: var(--serif);
-  font-size: 0.9rem;
-  font-style: italic;
-  color: var(--charcoal-light);
-  padding-top: 0.45rem;
-}
-.timeline-dot {
-  position: absolute;
-  right: -4px; top: 0.45rem;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--pink);
-}
+.timeline-time { text-align: right; padding-right: 2.25rem; position: relative; z-index: 1; font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--charcoal-light); padding-top: 0.5rem; letter-spacing: 0.02em; }
+.timeline-dot { position: absolute; right: -4px; top: 0.5rem; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 4px rgba(239,160,176,0.18); }
 
-/* ── Stats ─────────────────────────────────────────────────── */
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--cream-border); }
-.stat-num { font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 0.4rem; }
-.stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal-light); }
+/* ══════════════════════════════════════════════════════════ STEPS */
+.step-number { font-family: var(--serif); font-size: 4.25rem; font-weight: 300; color: var(--cream-mid); line-height: 1; margin-bottom: 1.75rem; letter-spacing: -0.03em; }
+.step-line { width: 1.75rem; height: 1px; background: var(--pink-deep); margin-bottom: 1.75rem; }
 
-/* ── Steps ─────────────────────────────────────────────────── */
-.step-number { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; color: var(--cream-border); line-height: 1; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
-.step-line { width: 2rem; height: 1px; background: var(--pink-deep); margin-bottom: 1.25rem; }
+/* ══════════════════════════════════════════════════════════ CTA DARK */
+#cta { background: #1F1C19; padding: var(--section-v) var(--px); text-align: center; position: relative; overflow: hidden; }
+#cta::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80%; height: 50%; background: radial-gradient(ellipse, rgba(239,160,176,0.055) 0%, transparent 65%); pointer-events: none; }
+.cta-line { width: 1px; height: 4.5rem; background: linear-gradient(to bottom, transparent, rgba(239,160,176,0.45)); margin: 0 auto 4rem; }
 
-/* ── CTA dark section ──────────────────────────────────────── */
-#cta {
-  background: var(--charcoal);
-  padding: clamp(5rem, 10vw, 9rem) var(--px);
-  text-align: center;
-}
-.cta-line { width: 2px; height: 3.5rem; background: rgba(244,166,181,0.4); margin: 0 auto 3rem; }
+/* ══════════════════════════════════════════════════════════ FORM */
+.form-wrap { background: rgba(247,243,235,0.55); border: 1px solid rgba(221,211,193,0.5); border-radius: 8px; padding: clamp(2.5rem, 5vw, 4rem); backdrop-filter: blur(6px); }
+.form-field { margin-bottom: 2.625rem; }
+.form-label { display: block; font-family: var(--sans); font-size: 0.64rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--charcoal-light); margin-bottom: 0.625rem; }
+.form-input, .form-textarea { width: 100%; font-family: var(--sans); font-size: 0.975rem; font-weight: 300; color: var(--charcoal); background: transparent; border: none; border-bottom: 1px solid var(--cream-border); padding: 0.875rem 0; outline: none; appearance: none; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(155,145,136,0.45); }
+.form-input:focus, .form-textarea:focus { border-bottom-color: var(--pink-deep); box-shadow: 0 2px 0 -1px rgba(212,122,147,0.12); }
+.form-textarea { resize: vertical; min-height: 118px; line-height: 1.8; }
+.form-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--cream-border) 25%, var(--cream-border) 75%, transparent); margin: 3rem 0; }
+.form-note { margin-top: 1.5rem; font-size: 0.78rem; color: var(--charcoal-light); text-align: center; font-style: italic; font-family: var(--serif); }
 
-/* ── Form ──────────────────────────────────────────────────── */
-.form-wrap {
-  background: var(--cream-dark);
-  border: 1px solid var(--cream-border);
-  border-radius: 4px;
-  padding: clamp(2rem, 4vw, 3.5rem);
-}
-.form-field { margin-bottom: 2.25rem; }
-.form-label {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--charcoal-light);
-  margin-bottom: 0.5rem;
-}
-.form-input, .form-textarea {
-  width: 100%;
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--charcoal);
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--cream-border);
-  padding: 0.875rem 0;
-  outline: none;
-  transition: border-color 0.25s ease;
-  appearance: none;
-}
-.form-input::placeholder, .form-textarea::placeholder { color: var(--charcoal-light); }
-.form-input:focus, .form-textarea:focus { border-bottom-color: var(--charcoal); }
-.form-textarea { resize: vertical; min-height: 110px; line-height: 1.7; }
-.form-divider { height: 1px; background: var(--cream-border); margin: 2.5rem 0; }
-.form-note { margin-top: 1.25rem; font-size: 0.78rem; color: var(--charcoal-light); text-align: center; font-style: italic; font-family: var(--serif); }
-
-/* ── Footer ────────────────────────────────────────────────── */
-footer {
-  background: var(--charcoal);
-  padding: clamp(4rem, 8vw, 7rem) var(--px) 2.5rem;
-}
-.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
-.footer-brand-name { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 300; color: rgba(246,242,234,0.92); line-height: 1.2; margin-bottom: 1.25rem; }
-.footer-tagline { font-size: 0.8rem; font-style: italic; font-family: var(--serif); color: var(--charcoal-light); line-height: 1.6; max-width: 22ch; }
-.footer-heading { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(154,144,136,0.6); margin-bottom: 1.25rem; font-family: var(--sans); }
-.footer-link { display: block; font-size: 0.875rem; font-weight: 300; color: var(--charcoal-light); text-decoration: none; margin-bottom: 0.75rem; transition: color 0.2s ease; }
-.footer-link:hover { color: rgba(246,242,234,0.92); }
-.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid rgba(221,213,198,0.12); }
-.footer-copy { font-size: 0.75rem; color: rgba(154,144,136,0.45); }
-.footer-phrase { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(154,144,136,0.28); font-family: var(--sans); }
-
-/* ── Value cards ───────────────────────────────────────────── */
-.value-dot { width: 2rem; height: 1px; background: var(--pink-deep); margin-bottom: 1.25rem; }
-
-/* ── Trust points ──────────────────────────────────────────── */
-.trust-list { border-top: 1px solid var(--cream-border); padding-top: 2.5rem; margin-top: 2.5rem; }
-.trust-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.875rem; }
-.trust-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--pink-deep); flex-shrink: 0; }
-.trust-text { font-size: 0.875rem; font-weight: 300; color: var(--charcoal-mid); font-family: var(--sans); }
-
-/* ── Page nav tabs ──────────────────────────────────────────── */
-.page-tabs {
-  display: flex;
-  gap: 1rem;
-  padding: 1.25rem var(--px);
-  background: var(--cream-dark);
-  border-bottom: 1px solid var(--cream-border);
-  overflow-x: auto;
-}
-.tab {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.5rem 1.25rem;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-  background: transparent;
-  color: var(--charcoal-mid);
-}
+/* ══════════════════════════════════════════════════════════ PAGE TABS */
+.page-tabs { display: flex; gap: 0.5rem; padding: 1rem var(--px); background: var(--cream-dark); border-bottom: 1px solid var(--cream-border); overflow-x: auto; scrollbar-width: none; }
+.page-tabs::-webkit-scrollbar { display: none; }
+.tab { font-family: var(--sans); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 1.375rem; border: 1px solid transparent; border-radius: 3px; cursor: pointer; white-space: nowrap; transition: all 0.25s ease; background: transparent; color: var(--charcoal-light); }
 .tab:hover { border-color: var(--cream-border); color: var(--charcoal); }
 .tab.active { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
-
-/* ── Page panels ────────────────────────────────────────────── */
 .page-panel { display: none; }
 .page-panel.active { display: block; }
 
-/* ── Scroll animations ──────────────────────────────────────── */
-.aos {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
-}
-.aos.visible { opacity: 1; transform: translateY(0); }
-.aos-d1 { transition-delay: 0.1s; }
-.aos-d2 { transition-delay: 0.2s; }
-.aos-d3 { transition-delay: 0.3s; }
-.aos-d4 { transition-delay: 0.4s; }
+/* ══════════════════════════════════════════════════════════ VALUES & TRUST */
+.value-dot { width: 1.75rem; height: 1px; background: linear-gradient(90deg, var(--pink-deep), transparent); margin-bottom: 1.5rem; }
+.trust-list { border-top: 1px solid var(--cream-border); padding-top: 2.5rem; margin-top: 2.75rem; }
+.trust-item { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1rem; }
+.trust-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--pink-deep); flex-shrink: 0; }
+.trust-text { font-size: 0.9rem; font-weight: 300; color: var(--charcoal-mid); font-family: var(--sans); }
 
-/* ── Responsive ─────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════ FOOTER */
+footer { background: #1F1C19; padding: clamp(5rem, 10vw, 8.5rem) var(--px) 3rem; position: relative; }
+footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(221,211,193,0.1) 25%, rgba(221,211,193,0.1) 75%, transparent); }
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.5rem; margin-bottom: 5rem; }
+.footer-brand-name { font-family: var(--serif); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 300; color: rgba(247,243,235,0.88); line-height: 1.15; letter-spacing: -0.01em; }
+.footer-brand-sep { width: 2rem; height: 1px; background: rgba(239,160,176,0.28); margin: 1.5rem 0; }
+.footer-tagline { font-size: 0.85rem; font-style: italic; font-family: var(--serif); color: rgba(155,145,136,0.65); line-height: 1.8; max-width: 22ch; }
+.footer-heading { font-size: 0.61rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(155,145,136,0.38); margin-bottom: 1.625rem; font-family: var(--sans); }
+.footer-link { display: inline-block; font-size: 0.9rem; font-weight: 300; color: rgba(155,145,136,0.65); text-decoration: none; margin-bottom: 0.875rem; position: relative; transition: color 0.25s ease; }
+.footer-link::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background: rgba(239,160,176,0.45); transition: width 0.32s var(--ease); }
+.footer-link:hover { color: rgba(247,243,235,0.85); }
+.footer-link:hover::after { width: 100%; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2.5rem; border-top: 1px solid rgba(221,211,193,0.07); }
+.footer-copy { font-size: 0.72rem; color: rgba(155,145,136,0.28); }
+.footer-phrase { font-family: var(--serif); font-size: 0.8rem; font-style: italic; color: rgba(155,145,136,0.22); }
+
+/* ══════════════════════════════════════════════════════════ ANIMATIONS */
+.aos { opacity: 0; transform: translateY(30px); transition: opacity 0.95s var(--ease), transform 0.95s var(--ease); }
+.aos.visible { opacity: 1; transform: translateY(0); }
+.aos-d1 { transition-delay: 0.11s; }
+.aos-d2 { transition-delay: 0.22s; }
+.aos-d3 { transition-delay: 0.33s; }
+.aos-d4 { transition-delay: 0.44s; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.95s var(--ease) forwards; }
+
+/* ══════════════════════════════════════════════════════════ RESPONSIVE */
 @media (max-width: 900px) {
-  .grid-2    { grid-template-columns: 1fr; }
-  .grid-3    { grid-template-columns: 1fr; }
-  .grid-4    { grid-template-columns: 1fr 1fr; }
+  header { top: 32px; }
+  .lang-bar { padding: 0.4rem var(--px); }
+  .lang-btn { padding: 0.25rem 0.5rem; font-size: 0.58rem; }
+  .grid-2    { grid-template-columns: 1fr; gap: 3rem; }
+  .grid-3    { grid-template-columns: 1fr; gap: 2rem; }
+  .grid-4    { grid-template-columns: 1fr 1fr; gap: 1.75rem; }
   .grid-2x2  { grid-template-columns: 1fr; }
-  .stats     { grid-template-columns: repeat(3, 1fr); }
-  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .stats     { grid-template-columns: repeat(3,1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.75rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.875rem; }
   .timeline::before { display: none; }
-  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.625rem; }
   .timeline-time { text-align: left; padding-right: 0; }
   .timeline-dot  { display: none; }
   .nav-desktop   { display: none; }
   .hero-bottom   { display: none; }
-
-  .btn-primary,
-  .btn-outline,
-  .btn-pink {
-    width: 100%;
-    padding: 1rem 2rem;
-    min-height: 48px;
-    justify-content: center;
-  }
+  .btn-primary, .btn-outline, .btn-pink { width: 100%; padding: 1.1rem 2rem; min-height: 52px; justify-content: center; }
+  .card { padding: 2.25rem; }
 }
-
 @media (max-width: 600px) {
-  .grid-4 { grid-template-columns: 1fr; }
-  .stats  { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .grid-4  { grid-template-columns: 1fr; }
+  .stats   { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .section { padding-top: clamp(4rem, 10vw, 6rem); padding-bottom: clamp(4rem, 10vw, 6rem); }
 }
 
-/* ── Success state animation ──────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fade-up { animation: fadeUp 0.8s var(--ease) forwards; }
+/* Push content below lang bar + header */
+.page-offset { padding-top: calc(36px + 70px); }
+@media (max-width: 900px) { .page-offset { padding-top: calc(32px + 64px); } }
 </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════════════════
-     HEADER
-═══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════ LANGUAGE BAR ══════════════════════════ -->
+<div class="lang-bar" id="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')" data-lang="en">EN</button>
+  <div class="lang-sep"></div>
+  <button class="lang-btn" onclick="setLang('es')" data-lang="es">ES</button>
+  <div class="lang-sep"></div>
+  <button class="lang-btn" onclick="setLang('fr')" data-lang="fr">FR</button>
+  <div class="lang-sep"></div>
+  <button class="lang-btn" onclick="setLang('it')" data-lang="it">IT</button>
+  <div class="lang-sep"></div>
+  <button class="lang-btn" onclick="setLang('de')" data-lang="de">DE</button>
+  <div class="lang-sep"></div>
+  <button class="lang-btn" onclick="setLang('ca')" data-lang="ca">CA</button>
+</div>
+
+<!-- ══════════════════════════ HEADER ══════════════════════════ -->
 <header>
   <div class="header-inner">
-    <a href="#home" class="wordmark" onclick="showPage('home')">
+    <a href="#" class="wordmark" onclick="showPage('home');return false;">
       <span class="wordmark-title">Girls Who Walk</span>
-      <span class="wordmark-sub">Move With Intention</span>
+      <span class="wordmark-sub" data-i18n="tagline_sub">Move With Intention</span>
     </a>
     <nav class="nav-desktop">
-      <a href="#" class="nav-link" onclick="showPage('home'); scrollTo('#about')">About</a>
-      <a href="#" class="nav-link" onclick="showPage('home'); scrollTo('#ritual')">Sunday Ritual</a>
-      <a href="#" class="nav-link" onclick="showPage('our-story')">Our Story</a>
-      <button class="btn-primary" onclick="showPage('waitlist')" style="padding:0.65rem 1.5rem;">Join Waitlist</button>
+      <a href="#" class="nav-link" onclick="showPage('home');return false;" data-i18n="nav_about">About</a>
+      <a href="#" class="nav-link" onclick="showPage('home');return false;" data-i18n="nav_ritual">Sunday Ritual</a>
+      <a href="#" class="nav-link" onclick="showPage('our-story');return false;" data-i18n="nav_story">Our Story</a>
+      <button class="btn-primary" onclick="showPage('waitlist')" style="padding:0.7rem 1.6rem;font-size:0.68rem;" data-i18n="nav_join">Join Waitlist</button>
     </nav>
   </div>
 </header>
 
-<!-- ════════════════════════════════════════════════════════
-     PAGE TABS (simulating Next.js routing)
-═══════════════════════════════════════════════════════════ -->
-<div style="padding-top:67px;">
+<div class="page-offset">
   <div class="page-tabs">
-    <button class="tab active" onclick="showPage('home')">/ Home</button>
-    <button class="tab" onclick="showPage('our-story')">/about</button>
-    <button class="tab" onclick="showPage('waitlist')">/waitlist</button>
+    <button class="tab active" onclick="showPage('home')" data-i18n="tab_home">/ Home</button>
+    <button class="tab" onclick="showPage('our-story')" data-i18n="tab_about">/about</button>
+    <button class="tab" onclick="showPage('waitlist')" data-i18n="tab_waitlist">/waitlist</button>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════
-     PAGE: HOME
-═══════════════════════════════════════════════════════════ -->
+
+<!-- ══════════════════════════ PAGE: HOME ══════════════════════════ -->
 <div id="page-home" class="page-panel active">
 
-  <!-- HERO ─────────────────────────────────────────────── -->
-  <section id="home" style="padding-top:clamp(9rem,18vw,15rem);padding-bottom:clamp(7rem,14vw,12rem);padding-left:var(--px);padding-right:var(--px);position:relative;overflow:hidden;">
+  <section class="hero-section">
     <div class="hero-orb"></div>
+    <div class="hero-orb-2"></div>
     <div class="inner">
-      <span class="label aos">A Sunday Movement</span>
-
-      <h1 class="display aos aos-d1" style="max-width:16ch;margin-bottom:3.5rem;">
-        Soft Power<br>
-        <em style="color:var(--charcoal-mid)">in Motion.</em>
+      <span class="label aos" data-i18n="hero_eyebrow">A Sunday Movement</span>
+      <h1 class="display aos aos-d1" style="max-width:14ch;margin-bottom:4rem;">
+        <span data-i18n="hero_h1_1">Soft Power</span><br>
+        <em style="color:var(--charcoal-mid);" data-i18n="hero_h1_2">in Motion.</em>
       </h1>
-
-      <div class="aos aos-d2" style="display:flex;flex-direction:column;gap:2.5rem;">
-        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:3rem;">
-          <p class="body-lg" style="max-width:44ch;flex:1;min-width:260px;">
-            Girls Who Walk is a curated Sunday ritual — early morning walks,
-            good coffee, and real conversation with women who show up
-            for themselves and each other.
-          </p>
-          <div class="hero-cta" style="flex-shrink:0;min-width:200px;">
-            <button class="btn-primary" onclick="showPage('waitlist')">Join the Waitlist</button>
-            <a href="#about" class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</a>
-          </div>
+      <div class="aos aos-d2" style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:4rem;">
+        <p class="body-lg" style="max-width:42ch;flex:1;min-width:260px;" data-i18n="hero_body">
+          Girls Who Walk is a curated Sunday ritual — early morning walks, good coffee, and real conversation with women who show up for themselves and each other.
+        </p>
+        <div class="hero-cta" style="flex-shrink:0;min-width:200px;">
+          <button class="btn-primary" onclick="showPage('waitlist')" data-i18n="btn_join_waitlist">Join the Waitlist</button>
+          <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" data-i18n="btn_learn_more">Learn More</button>
         </div>
       </div>
-
       <div class="hero-bottom aos aos-d3">
-        <div style="width:2.5rem;height:1px;background:var(--cream-border)"></div>
-        <span class="label" style="margin-bottom:0;">Scroll to discover</span>
+        <div style="width:3rem;height:1px;background:var(--cream-border);"></div>
+        <span class="label" style="margin-bottom:0;" data-i18n="scroll_hint">Scroll to discover</span>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ABOUT ────────────────────────────────────────────── -->
-  <section id="about" class="section" style="background:var(--cream-dark)">
+  <!-- ABOUT -->
+  <section id="about" class="section" style="background:var(--cream-dark);">
     <div class="inner">
       <div class="grid-2">
         <div class="aos">
-          <span class="label">The Movement</span>
+          <span class="label" data-i18n="about_eyebrow">The Movement</span>
           <span class="line-accent"></span>
-          <h2 class="h1" style="max-width:14ch;">More than a walk.</h2>
+          <h2 class="h1" style="max-width:12ch;" data-i18n="about_h1">More than<br>a walk.</h2>
         </div>
         <div class="aos aos-d1">
-          <p class="body-lg" style="margin-bottom:1.75rem;">
-            We live in a world that worships speed. Girls Who Walk is a quiet
-            refusal. A Sunday morning practice of moving slowly, breathing
-            deeply, and connecting with women who choose presence over performance.
-          </p>
-          <p class="body" style="margin-bottom:1.75rem;">
-            There are no leaderboards. No pace requirements. No pressure to arrive
-            perfectly put together. Just you, comfortable shoes, and a small
-            circle of women who also needed this.
-          </p>
-          <p class="body" style="font-style:italic;color:var(--charcoal-mid)">
-            This is your Sunday ritual now.
-          </p>
+          <p class="body-lg" style="margin-bottom:2rem;" data-i18n="about_p1">We live in a world that worships speed. Girls Who Walk is a quiet refusal. A Sunday morning practice of moving slowly, breathing deeply, and connecting with women who choose presence over performance.</p>
+          <p class="body" style="margin-bottom:1.75rem;" data-i18n="about_p2">There are no leaderboards. No pace requirements. No pressure to arrive perfectly put together. Just you, comfortable shoes, and a small circle of women who also needed this.</p>
+          <p class="body" style="font-style:italic;" data-i18n="about_p3">This is your Sunday ritual now.</p>
           <div class="stats">
-            <div>
-              <p class="stat-num">7:30</p>
-              <p class="stat-label">Sunday<br>Morning</p>
-            </div>
-            <div>
-              <p class="stat-num">~10</p>
-              <p class="stat-label">Women Per<br>Group</p>
-            </div>
-            <div>
-              <p class="stat-num">∞</p>
-              <p class="stat-label">Conversations<br>Worth Having</p>
-            </div>
+            <div><p class="stat-num">7:30</p><p class="stat-label" data-i18n="stat_1">Sunday<br>Morning</p></div>
+            <div><p class="stat-num">~10</p><p class="stat-label" data-i18n="stat_2">Women Per<br>Group</p></div>
+            <div><p class="stat-num">∞</p><p class="stat-label" data-i18n="stat_3">Conversations<br>Worth Having</p></div>
           </div>
         </div>
       </div>
@@ -614,43 +338,30 @@ footer {
 
   <div class="divider"></div>
 
-  <!-- SUNDAY RITUAL ─────────────────────────────────────── -->
+  <!-- RITUAL -->
   <section id="ritual" class="section">
     <div class="inner">
-      <div class="aos" style="margin-bottom:clamp(4rem,7vw,7rem)">
-        <span class="label">The Sunday Ritual</span>
-        <h2 class="h1" style="max-width:18ch;">A morning designed <em>to stay with you.</em></h2>
-        <p class="body" style="max-width:40ch;margin-top:1.5rem;">Every Sunday. Same rhythm. Changing only by season, city, and the women who join.</p>
+      <div class="aos" style="margin-bottom:clamp(5rem,9vw,8rem);">
+        <span class="label" data-i18n="ritual_eyebrow">The Sunday Ritual</span>
+        <h2 class="h1" style="max-width:18ch;" data-i18n="ritual_h1">A morning designed<br><em>to stay with you.</em></h2>
+        <p class="body" style="max-width:38ch;margin-top:1.75rem;" data-i18n="ritual_sub">Every Sunday. Same rhythm. Changing only by season, city, and the women who join.</p>
       </div>
-
       <div class="timeline">
         <div class="timeline-item aos">
           <div class="timeline-time">7:15 am<div class="timeline-dot"></div></div>
-          <div>
-            <h3 class="h3" style="margin-bottom:0.75rem;">Arrive</h3>
-            <p class="body" style="max-width:52ch;">A quiet corner of the city. You find us by a landmark, not a busy entrance. Small group already gathering. Someone hands you a coffee order slip.</p>
-          </div>
+          <div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="t1_title">Arrive</h3><p class="body" style="max-width:52ch;" data-i18n="t1_body">A quiet corner of the city. You find us by a landmark, not a busy entrance. Small group already gathering. Someone hands you a coffee order slip.</p></div>
         </div>
         <div class="timeline-item aos aos-d1">
           <div class="timeline-time">7:30 am<div class="timeline-dot"></div></div>
-          <div>
-            <h3 class="h3" style="margin-bottom:0.75rem;">We Walk</h3>
-            <p class="body" style="max-width:52ch;">No phones out. No headphones. A 45–60 minute route through the neighbourhood — scenic, unhurried, and always a little unexpected.</p>
-          </div>
+          <div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="t2_title">We Walk</h3><p class="body" style="max-width:52ch;" data-i18n="t2_body">No phones out. No headphones. A 45–60 minute route through the neighbourhood — scenic, unhurried, and always a little unexpected.</p></div>
         </div>
         <div class="timeline-item aos aos-d2">
           <div class="timeline-time">8:30 am<div class="timeline-dot"></div></div>
-          <div>
-            <h3 class="h3" style="margin-bottom:0.75rem;">Coffee Together</h3>
-            <p class="body" style="max-width:52ch;">We settle into a local café with good light and real tables. Introductions happen naturally. Conversations run long. Nobody checks the time.</p>
-          </div>
+          <div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="t3_title">Coffee Together</h3><p class="body" style="max-width:52ch;" data-i18n="t3_body">We settle into a local café with good light and real tables. Introductions happen naturally. Conversations run long. Nobody checks the time.</p></div>
         </div>
         <div class="timeline-item aos aos-d3">
           <div class="timeline-time">10:00 am<div class="timeline-dot"></div></div>
-          <div>
-            <h3 class="h3" style="margin-bottom:0.75rem;">Until Next Sunday</h3>
-            <p class="body" style="max-width:52ch;">That's it. No agenda. No commitment beyond showing up. But somehow, you already feel like coming back.</p>
-          </div>
+          <div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="t4_title">Until Next Sunday</h3><p class="body" style="max-width:52ch;" data-i18n="t4_body">That's it. No agenda. No commitment beyond showing up. But somehow, you already feel like coming back.</p></div>
         </div>
       </div>
     </div>
@@ -658,50 +369,37 @@ footer {
 
   <div class="divider"></div>
 
-  <!-- FUTURE VISION ─────────────────────────────────────── -->
-  <section class="section" style="background:var(--cream-dark)">
+  <!-- VISION -->
+  <section class="section" style="background:var(--cream-dark);">
     <div class="inner">
-      <div class="aos" style="margin-bottom:clamp(4rem,7vw,7rem)">
-        <span class="label">The Vision</span>
-        <h2 class="h1" style="max-width:20ch;">One ritual.<br><em>Many chapters.</em></h2>
-        <p class="body-lg" style="max-width:50ch;margin-top:2rem;">
-          Girls Who Walk is a platform, not just a walk club. What begins on
-          Sunday mornings is the foundation for an entirely different way of building community.
-        </p>
+      <div class="aos" style="margin-bottom:clamp(5rem,9vw,8rem);">
+        <span class="label" data-i18n="vision_eyebrow">The Vision</span>
+        <h2 class="h1" style="max-width:18ch;" data-i18n="vision_h1">One ritual.<br><em>Many chapters.</em></h2>
+        <p class="body-lg" style="max-width:46ch;margin-top:2.25rem;" data-i18n="vision_body">Girls Who Walk is a platform, not just a walk club. What begins on Sunday mornings is the foundation for an entirely different way of building community.</p>
       </div>
-
       <div class="grid-2x2">
-        <div class="card aos" style="border-color:var(--pink);">
+        <div class="card aos" style="border-color:rgba(239,160,176,0.45);background:rgba(239,160,176,0.04);">
           <div class="card-tag">
-            <span class="label" style="color:var(--charcoal);margin-bottom:0;">Walk + Coffee</span>
-            <span class="status-badge" style="color:var(--pink-deep);border:1px solid var(--pink);background:transparent;">Active</span>
+            <span class="label" style="color:var(--charcoal);margin-bottom:0;" data-i18n="card1_label">Walk + Coffee</span>
+            <span class="status-badge" style="color:var(--pink-deep);border:1px solid rgba(239,160,176,0.38);background:rgba(239,160,176,0.07);" data-i18n="badge_active">Active</span>
           </div>
-          <h3 class="h3" style="margin-bottom:0.875rem;">Where it all begins.</h3>
-          <p class="body">Our founding ritual. A Sunday walk followed by an unhurried hour at a local café. This is the core. Everything else grows from here.</p>
+          <h3 class="h3" style="margin-bottom:1rem;" data-i18n="card1_h3">Where it all begins.</h3>
+          <p class="body" data-i18n="card1_body">Our founding ritual. A Sunday walk followed by an unhurried hour at a local café. This is the core. Everything else grows from here.</p>
         </div>
         <div class="card aos aos-d1">
-          <div class="card-tag">
-            <span class="label" style="margin-bottom:0;">Walk + Cowork</span>
-            <span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);">Coming Soon</span>
-          </div>
-          <h3 class="h3" style="margin-bottom:0.875rem;">Move your body. Then move your work forward.</h3>
-          <p class="body">A Sunday walk followed by a quiet coworking session. For women who want to create something alongside community.</p>
+          <div class="card-tag"><span class="label" style="margin-bottom:0;" data-i18n="card2_label">Walk + Cowork</span><span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);" data-i18n="badge_soon">Coming Soon</span></div>
+          <h3 class="h3" style="margin-bottom:1rem;" data-i18n="card2_h3">Move your body. Then move your work forward.</h3>
+          <p class="body" data-i18n="card2_body">A Sunday walk followed by a quiet coworking session. For women who want to create something alongside community.</p>
         </div>
         <div class="card aos aos-d2">
-          <div class="card-tag">
-            <span class="label" style="margin-bottom:0;">Walk + Pilates</span>
-            <span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);">Coming Soon</span>
-          </div>
-          <h3 class="h3" style="margin-bottom:0.875rem;">Two kinds of quiet strength.</h3>
-          <p class="body">Begin outside with our morning walk, then transition to a private Pilates session. A full Sunday morning for your body.</p>
+          <div class="card-tag"><span class="label" style="margin-bottom:0;" data-i18n="card3_label">Walk + Pilates</span><span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);" data-i18n="badge_soon">Coming Soon</span></div>
+          <h3 class="h3" style="margin-bottom:1rem;" data-i18n="card3_h3">Two kinds of quiet strength.</h3>
+          <p class="body" data-i18n="card3_body">Begin outside with our morning walk, then transition to a private Pilates session. A full Sunday morning for your body.</p>
         </div>
         <div class="card aos aos-d3">
-          <div class="card-tag">
-            <span class="label" style="margin-bottom:0;">Walk + Talks</span>
-            <span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);">Coming Soon</span>
-          </div>
-          <h3 class="h3" style="margin-bottom:0.875rem;">Movement, then meaning.</h3>
-          <p class="body">Our walk concludes with an intimate talk from a woman doing something remarkable. No stage. Just conversation in a room with good light.</p>
+          <div class="card-tag"><span class="label" style="margin-bottom:0;" data-i18n="card4_label">Walk + Talks</span><span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);" data-i18n="badge_soon">Coming Soon</span></div>
+          <h3 class="h3" style="margin-bottom:1rem;" data-i18n="card4_h3">Movement, then meaning.</h3>
+          <p class="body" data-i18n="card4_body">Our walk concludes with an intimate talk from a woman doing something remarkable. No stage. Just conversation in a room with good light.</p>
         </div>
       </div>
     </div>
@@ -709,97 +407,57 @@ footer {
 
   <div class="divider"></div>
 
-  <!-- HOW IT WORKS ──────────────────────────────────────── -->
+  <!-- HOW IT WORKS -->
   <section class="section">
     <div class="inner">
-      <div class="aos" style="margin-bottom:clamp(4rem,7vw,7rem)">
-        <span class="label">The Process</span>
-        <h2 class="h1" style="max-width:16ch;">How to join us.</h2>
+      <div class="aos" style="margin-bottom:clamp(5rem,9vw,8rem);">
+        <span class="label" data-i18n="process_eyebrow">The Process</span>
+        <h2 class="h1" style="max-width:14ch;" data-i18n="process_h1">How to join us.</h2>
       </div>
-
       <div class="grid-4">
-        <div class="aos">
-          <p class="step-number">01</p>
-          <div class="step-line"></div>
-          <h3 class="h3" style="margin-bottom:0.875rem;">Apply</h3>
-          <p class="body">Fill out a short form. Tell us your city and a little about why you want to join. No CV required — just honesty.</p>
-        </div>
-        <div class="aos aos-d1">
-          <p class="step-number">02</p>
-          <div class="step-line"></div>
-          <h3 class="h3" style="margin-bottom:0.875rem;">Reviewed</h3>
-          <p class="body">We read every application personally. We keep groups small intentionally, so we take our time.</p>
-        </div>
-        <div class="aos aos-d2">
-          <p class="step-number">03</p>
-          <div class="step-line"></div>
-          <h3 class="h3" style="margin-bottom:0.875rem;">Selected</h3>
-          <p class="body">If there's a spot for you, we'll reach out with all the details — time, meeting point, and what to bring (just yourself).</p>
-        </div>
-        <div class="aos aos-d3">
-          <p class="step-number">04</p>
-          <div class="step-line"></div>
-          <h3 class="h3" style="margin-bottom:0.875rem;">First Walk</h3>
-          <p class="body">Show up. Someone will be there. By the time coffee arrives, it will feel like you've known us for months.</p>
-        </div>
+        <div class="aos"><p class="step-number">01</p><div class="step-line"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="step1_title">Apply</h3><p class="body" data-i18n="step1_body">Fill out a short form. Tell us your city and a little about why you want to join. No CV required — just honesty.</p></div>
+        <div class="aos aos-d1"><p class="step-number">02</p><div class="step-line"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="step2_title">Reviewed</h3><p class="body" data-i18n="step2_body">We read every application personally. We keep groups small intentionally, so we take our time.</p></div>
+        <div class="aos aos-d2"><p class="step-number">03</p><div class="step-line"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="step3_title">Selected</h3><p class="body" data-i18n="step3_body">If there's a spot for you, we'll reach out with all the details — time, meeting point, and what to bring (just yourself).</p></div>
+        <div class="aos aos-d3"><p class="step-number">04</p><div class="step-line"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="step4_title">First Walk</h3><p class="body" data-i18n="step4_body">Show up. Someone will be there. By the time coffee arrives, it will feel like you've known us for months.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA ──────────────────────────────────────────────── -->
-  <section id="cta" class="section">
-    <div class="inner" style="max-width:60ch;margin:0 auto;text-align:center;">
+  <!-- CTA -->
+  <section id="cta">
+    <div class="inner" style="max-width:56ch;margin:0 auto;text-align:center;position:relative;z-index:1;">
       <div class="cta-line aos"></div>
-      <span class="label" style="color:rgba(154,144,136,0.8);">Limited Spots</span>
-      <h2 class="aos aos-d1" style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:rgba(246,242,234,0.95);margin-bottom:2rem;margin-top:1.5rem;">
-        Your Sunday mornings<br><em style="color:var(--pink)">are waiting.</em>
-      </h2>
-      <p class="body" style="color:var(--charcoal-light);margin-bottom:3rem;max-width:42ch;margin-left:auto;margin-right:auto;">
-        We open spots in small batches. Apply now and we'll reach out when something opens in your city.
-      </p>
-      <button class="btn-pink aos aos-d2" onclick="showPage('waitlist')" style="font-size:0.78rem;padding:1.1rem 3rem;">Apply to Join</button>
-      <p style="margin-top:1.5rem;font-size:0.8rem;font-style:italic;font-family:var(--serif);color:rgba(154,144,136,0.45);">Free to join. Always will be.</p>
+      <span class="label" style="color:rgba(155,145,136,0.55);" data-i18n="cta_eyebrow">Limited Spots</span>
+      <h2 class="aos aos-d1" style="font-family:var(--serif);font-size:clamp(3rem,7vw,6.5rem);font-weight:300;line-height:1.0;letter-spacing:-0.025em;color:rgba(247,243,235,0.92);margin-bottom:2.25rem;margin-top:1.75rem;" data-i18n="cta_h2">Your Sunday mornings<br><em style="color:var(--pink);">are waiting.</em></h2>
+      <p class="body" style="color:rgba(155,145,136,0.7);margin-bottom:3.5rem;max-width:40ch;margin-left:auto;margin-right:auto;" data-i18n="cta_body">We open spots in small batches. Apply now and we'll reach out when something opens in your city.</p>
+      <button class="btn-pink aos aos-d2" onclick="showPage('waitlist')" style="padding:1.15rem 3.5rem;" data-i18n="btn_apply">Apply to Join</button>
+      <p style="margin-top:2rem;font-size:0.88rem;font-style:italic;font-family:var(--serif);color:rgba(155,145,136,0.32);" data-i18n="cta_free">Free to join. Always will be.</p>
     </div>
   </section>
 
-</div>
-<!-- end #page-home -->
+</div><!-- end #page-home -->
 
 
-<!-- ════════════════════════════════════════════════════════
-     PAGE: OUR STORY (/about)
-═══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════ PAGE: OUR STORY ══════════════════════════ -->
 <div id="page-our-story" class="page-panel">
 
-  <section class="section" style="padding-top:clamp(5rem,10vw,8rem);">
+  <section class="section" style="padding-top:clamp(6rem,12vw,10rem);">
     <div class="inner">
-      <span class="label aos">Our Story</span>
-      <h1 class="display aos aos-d1" style="max-width:14ch;margin-bottom:0;">
-        Built slowly.<br><em style="color:var(--charcoal-mid)">On purpose.</em>
-      </h1>
+      <span class="label aos" data-i18n="story_eyebrow">Our Story</span>
+      <h1 class="display aos aos-d1" style="max-width:12ch;" data-i18n="story_h1">Built slowly.<br><em style="color:var(--charcoal-mid);">On purpose.</em></h1>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <section class="section" style="background:var(--cream-dark)">
+  <section class="section" style="background:var(--cream-dark);">
     <div class="inner">
       <div class="grid-2">
-        <div class="aos">
-          <span class="line-accent"></span>
-          <h2 class="h2">How it started.</h2>
-        </div>
+        <div class="aos"><span class="line-accent"></span><h2 class="h2" data-i18n="story_start_h2">How it started.</h2></div>
         <div class="aos aos-d1">
-          <p class="body-lg" style="margin-bottom:1.75rem;">
-            It started with one Sunday, one park, and four women who all said the same thing afterwards: "We should do this again."
-          </p>
-          <p class="body" style="margin-bottom:1.75rem;">
-            No apps. No group chats with 200 strangers. No performance.
-            Just a walk, a table at a café, and the slow realisation that this was something we'd all been missing.
-          </p>
-          <p class="body">
-            Girls Who Walk grew from that one morning. It remains small because that's how it works best. The intimacy is the point.
-          </p>
+          <p class="body-lg" style="margin-bottom:2rem;" data-i18n="story_start_p1">It started with one Sunday, one park, and four women who all said the same thing afterwards: "We should do this again."</p>
+          <p class="body" style="margin-bottom:1.75rem;" data-i18n="story_start_p2">No apps. No group chats with 200 strangers. No performance. Just a walk, a table at a café, and the slow realisation that this was something we'd all been missing.</p>
+          <p class="body" data-i18n="story_start_p3">Girls Who Walk grew from that one morning. It remains small because that's how it works best. The intimacy is the point.</p>
         </div>
       </div>
     </div>
@@ -809,230 +467,595 @@ footer {
 
   <section class="section">
     <div class="inner">
-      <div class="aos" style="margin-bottom:clamp(4rem,7vw,6rem)">
-        <span class="label">Our Values</span>
-        <h2 class="h1" style="max-width:16ch;">What we believe.</h2>
+      <div class="aos" style="margin-bottom:clamp(5rem,9vw,7rem);">
+        <span class="label" data-i18n="values_eyebrow">Our Values</span>
+        <h2 class="h1" style="max-width:14ch;" data-i18n="values_h1">What we believe.</h2>
       </div>
-      <div class="grid-3" style="gap:2.5rem;">
-        <div class="aos"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Slowness is radical.</h3><p class="body">We don't optimise the walk. There's no step count, no pace goal. The slowness is intentional — it's what makes space for real connection.</p></div>
-        <div class="aos aos-d1"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Small is a feature.</h3><p class="body">Every group has a maximum. Not because we want exclusivity, but because intimacy requires it. You can't truly connect with 40 people on a Sunday morning.</p></div>
-        <div class="aos aos-d2"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Community over content.</h3><p class="body">We are not building an Instagram aesthetic. We are building friendships. What you experience in person will always matter more than what gets posted.</p></div>
-        <div class="aos"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Curation is care.</h3><p class="body">We review every application personally. This isn't gatekeeping — it's an act of care for every woman who shows up. We want the room to feel right.</p></div>
-        <div class="aos aos-d1"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Cities, not feeds.</h3><p class="body">Girls Who Walk grows city by city, not through viral moments. Each city gets its own rhythm, its own regular spots, its own community.</p></div>
-        <div class="aos aos-d2"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Presence over performance.</h3><p class="body">You don't need to arrive ready to network. You don't need a pitch. Come exactly as you are on a Sunday morning.</p></div>
+      <div class="grid-3" style="gap:3rem;">
+        <div class="aos"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="v1_h3">Slowness is radical.</h3><p class="body" data-i18n="v1_body">We don't optimise the walk. There's no step count, no pace goal. The slowness is intentional — it's what makes space for real connection.</p></div>
+        <div class="aos aos-d1"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="v2_h3">Small is a feature.</h3><p class="body" data-i18n="v2_body">Every group has a maximum. Not because we want exclusivity, but because intimacy requires it. You can't truly connect with 40 people on a Sunday morning.</p></div>
+        <div class="aos aos-d2"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="v3_h3">Community over content.</h3><p class="body" data-i18n="v3_body">We are not building an Instagram aesthetic. We are building friendships. What you experience in person will always matter more than what gets posted.</p></div>
+        <div class="aos"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="v4_h3">Curation is care.</h3><p class="body" data-i18n="v4_body">We review every application personally. This isn't gatekeeping — it's an act of care for every woman who shows up. We want the room to feel right.</p></div>
+        <div class="aos aos-d1"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="v5_h3">Cities, not feeds.</h3><p class="body" data-i18n="v5_body">Girls Who Walk grows city by city, not through viral moments. Each city gets its own rhythm, its own regular spots, its own community.</p></div>
+        <div class="aos aos-d2"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:1rem;" data-i18n="v6_h3">Presence over performance.</h3><p class="body" data-i18n="v6_body">You don't need to arrive ready to network. You don't need a pitch. Come exactly as you are on a Sunday morning.</p></div>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <section class="section" style="background:var(--cream-dark)">
+  <section class="section" style="background:var(--cream-dark);">
     <div class="inner">
       <div class="grid-2">
-        <div class="aos">
-          <span class="label">How We Grow</span>
-          <span class="line-accent"></span>
-          <h2 class="h2" style="max-width:14ch;">Slow, deliberate, rooted.</h2>
-        </div>
+        <div class="aos"><span class="label" data-i18n="grow_eyebrow">How We Grow</span><span class="line-accent"></span><h2 class="h2" style="max-width:12ch;" data-i18n="grow_h2">Slow, deliberate, rooted.</h2></div>
         <div class="aos aos-d1">
-          <p class="body-lg" style="margin-bottom:1.75rem;">
-            We are not trying to become a platform with millions of users. We are trying to build something that still feels meaningful in three years.
-          </p>
-          <p class="body" style="margin-bottom:1.75rem;">
-            New cities open when there's a woman on the ground who understands the vision and has the network to do it right. No rapid scaling. No franchise model. Just trust.
-          </p>
-          <p class="body" style="margin-bottom:2.5rem;">
-            If you're in a city that doesn't have Girls Who Walk yet, tell us on your waitlist application. You might be the one who starts it.
-          </p>
-          <button class="btn-primary" onclick="showPage('waitlist')">Join the Waitlist</button>
+          <p class="body-lg" style="margin-bottom:2rem;" data-i18n="grow_p1">We are not trying to become a platform with millions of users. We are trying to build something that still feels meaningful in three years.</p>
+          <p class="body" style="margin-bottom:1.75rem;" data-i18n="grow_p2">New cities open when there's a woman on the ground who understands the vision and has the network to do it right. No rapid scaling. No franchise model. Just trust.</p>
+          <p class="body" style="margin-bottom:3rem;" data-i18n="grow_p3">If you're in a city that doesn't have Girls Who Walk yet, tell us on your waitlist application. You might be the one who starts it.</p>
+          <button class="btn-primary" onclick="showPage('waitlist')" data-i18n="btn_join_waitlist">Join the Waitlist</button>
         </div>
       </div>
     </div>
   </section>
 
-</div>
-<!-- end #page-our-story -->
+</div><!-- end #page-our-story -->
 
 
-<!-- ════════════════════════════════════════════════════════
-     PAGE: WAITLIST (/waitlist)
-═══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════ PAGE: WAITLIST ══════════════════════════ -->
 <div id="page-waitlist" class="page-panel">
-  <section class="section" style="padding-top:clamp(5rem,10vw,8rem)">
+  <section class="section" style="padding-top:clamp(6rem,12vw,10rem);">
     <div class="inner">
-      <div class="grid-2" style="gap:clamp(3rem,6vw,8rem)">
-
-        <!-- Left: context -->
+      <div class="grid-2" style="gap:clamp(3.5rem,7vw,9rem);">
         <div class="aos">
-          <span class="label">Apply</span>
+          <span class="label" data-i18n="wl_eyebrow">Apply</span>
           <span class="line-accent"></span>
-          <h1 style="font-family:var(--serif);font-size:clamp(2.75rem,6vw,5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:2.5rem;max-width:14ch;">
-            We'd love to <em>meet you.</em>
-          </h1>
-          <p class="body-lg" style="margin-bottom:2rem;">
-            Groups are intentionally small. We open spots in batches and review every application personally.
-          </p>
-          <p class="body" style="margin-bottom:2.5rem;">
-            Fill in the form and we'll reach out when something opens in your city. It's free. It always will be.
-          </p>
+          <h1 style="font-family:var(--serif);font-size:clamp(3rem,6.5vw,6rem);font-weight:300;line-height:1.0;letter-spacing:-0.025em;color:var(--charcoal);margin-bottom:2.75rem;max-width:13ch;" data-i18n="wl_h1">We'd love to<br><em>meet you.</em></h1>
+          <p class="body-lg" style="margin-bottom:2rem;" data-i18n="wl_p1">Groups are intentionally small. We open spots in batches and review every application personally.</p>
+          <p class="body" style="margin-bottom:2.75rem;" data-i18n="wl_p2">Fill in the form and we'll reach out when something opens in your city. It's free. It always will be.</p>
           <div class="trust-list">
-            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text">No subscription fees</span></div>
-            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text">Small, curated groups</span></div>
-            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text">Personal review of every application</span></div>
-            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text">Expanding to new cities soon</span></div>
+            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text" data-i18n="trust_1">No subscription fees</span></div>
+            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text" data-i18n="trust_2">Small, curated groups</span></div>
+            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text" data-i18n="trust_3">Personal review of every application</span></div>
+            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text" data-i18n="trust_4">Expanding to new cities soon</span></div>
           </div>
         </div>
-
-        <!-- Right: form -->
         <div class="aos aos-d1">
-          <div class="form-wrap" id="form-wrap">
-
-            <!-- Success state (hidden by default) -->
-            <div id="form-success" style="display:none;text-align:center;padding:3rem 1rem;" class="fade-up">
-              <div style="width:5rem;height:5rem;border-radius:50%;background:var(--pink-muted);border:1px solid var(--pink);display:flex;align-items:center;justify-content:center;margin:0 auto 2.5rem;font-size:1.5rem;">✦</div>
-              <span class="label" style="margin-bottom:1.5rem;display:block;">Application Received</span>
-              <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;margin-bottom:1.5rem;">We'll be in touch.</h2>
-              <p class="body" style="max-width:40ch;margin:0 auto;">Thank you for applying. We read every submission personally. If there's a spot for you, we'll reach out with everything you need to join your first walk.</p>
-              <p style="margin-top:2rem;font-size:0.85rem;font-style:italic;font-family:var(--serif);color:var(--charcoal-light)">In the meantime — go for a walk. It helps.</p>
+          <div class="form-wrap">
+            <div id="form-success" style="display:none;text-align:center;padding:4rem 1rem;">
+              <div style="width:5.5rem;height:5.5rem;border-radius:50%;background:rgba(239,160,176,0.09);border:1px solid rgba(239,160,176,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 3rem;font-family:var(--serif);font-size:1.75rem;color:var(--pink-deep);">✦</div>
+              <span class="label" style="margin-bottom:1.75rem;display:block;" data-i18n="success_label">Application Received</span>
+              <h2 style="font-family:var(--serif);font-size:clamp(2.25rem,5vw,3.5rem);font-weight:300;line-height:1.1;margin-bottom:1.75rem;letter-spacing:-0.015em;" data-i18n="success_h2">We'll be in touch.</h2>
+              <p class="body" style="max-width:38ch;margin:0 auto;" data-i18n="success_body">Thank you for applying. We read every submission personally. If there's a spot for you, we'll reach out with everything you need to join your first walk.</p>
+              <p style="margin-top:2.5rem;font-size:0.9rem;font-style:italic;font-family:var(--serif);color:var(--charcoal-light);" data-i18n="success_note">In the meantime — go for a walk. It helps.</p>
             </div>
-
-            <!-- Form -->
             <form id="waitlist-form" onsubmit="submitWaitlist(event)" novalidate>
               <div class="form-field">
-                <label class="form-label" for="wl-name">Full Name *</label>
+                <label class="form-label" for="wl-name" data-i18n="field_name">Full Name *</label>
                 <input class="form-input" id="wl-name" type="text" placeholder="Your name" autocomplete="name" required />
-                <p class="form-error" id="err-name" style="display:none;font-size:0.8rem;color:#B85A64;margin-top:0.35rem;font-style:italic;">Please enter your name.</p>
+                <p id="err-name" style="display:none;font-size:0.78rem;color:#B85A64;margin-top:0.4rem;font-style:italic;font-family:var(--serif);" data-i18n="err_name">Please enter your name.</p>
               </div>
               <div class="form-field">
-                <label class="form-label" for="wl-email">Email Address *</label>
+                <label class="form-label" for="wl-email" data-i18n="field_email">Email Address *</label>
                 <input class="form-input" id="wl-email" type="email" placeholder="your@email.com" autocomplete="email" required />
-                <p class="form-error" id="err-email" style="display:none;font-size:0.8rem;color:#B85A64;margin-top:0.35rem;font-style:italic;">Please enter a valid email address.</p>
+                <p id="err-email" style="display:none;font-size:0.78rem;color:#B85A64;margin-top:0.4rem;font-style:italic;font-family:var(--serif);" data-i18n="err_email">Please enter a valid email address.</p>
               </div>
               <div class="form-field">
-                <label class="form-label" for="wl-city">Your City *</label>
+                <label class="form-label" for="wl-city" data-i18n="field_city">Your City *</label>
                 <input class="form-input" id="wl-city" type="text" placeholder="City, Country" autocomplete="address-level2" required />
-                <p class="form-error" id="err-city" style="display:none;font-size:0.8rem;color:#B85A64;margin-top:0.35rem;font-style:italic;">Please enter your city.</p>
+                <p id="err-city" style="display:none;font-size:0.78rem;color:#B85A64;margin-top:0.4rem;font-style:italic;font-family:var(--serif);" data-i18n="err_city">Please enter your city.</p>
               </div>
               <div class="form-field">
-                <label class="form-label" for="wl-ig">Instagram Handle (optional)</label>
+                <label class="form-label" for="wl-ig" data-i18n="field_ig">Instagram Handle (optional)</label>
                 <input class="form-input" id="wl-ig" type="text" placeholder="@yourhandle" />
               </div>
               <div class="form-field">
-                <label class="form-label" for="wl-why">Why do you want to join? *</label>
-                <textarea class="form-textarea" id="wl-why" placeholder="Tell us a little about yourself and what draws you to this..." required></textarea>
-                <p class="form-error" id="err-why" style="display:none;font-size:0.8rem;color:#B85A64;margin-top:0.35rem;font-style:italic;">Please share a bit more — at least a sentence or two.</p>
+                <label class="form-label" for="wl-why" data-i18n="field_why">Why do you want to join? *</label>
+                <textarea class="form-textarea" id="wl-why" placeholder="Tell us a little about yourself…" required></textarea>
+                <p id="err-why" style="display:none;font-size:0.78rem;color:#B85A64;margin-top:0.4rem;font-style:italic;font-family:var(--serif);" data-i18n="err_why">Please share a bit more — at least a sentence or two.</p>
               </div>
               <div class="form-divider"></div>
-              <button type="submit" class="btn-primary" id="submit-btn" style="width:100%;">Submit Application</button>
-              <p class="form-note">We never share your data. Ever.</p>
+              <button type="submit" class="btn-primary" id="submit-btn" style="width:100%;" data-i18n="btn_submit">Submit Application</button>
+              <p class="form-note" data-i18n="form_note">We never share your data. Ever.</p>
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-</div>
-<!-- end #page-waitlist -->
+</div><!-- end #page-waitlist -->
 
 
-<!-- ════════════════════════════════════════════════════════
-     FOOTER (shared)
-═══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
 <footer>
   <div class="inner">
     <div class="footer-grid">
       <div>
         <p class="footer-brand-name">Girls Who Walk</p>
-        <p class="footer-tagline">Slow down. Show up.<br>Walk together.</p>
+        <div class="footer-brand-sep"></div>
+        <p class="footer-tagline" data-i18n="footer_tagline">Slow down. Show up.<br>Walk together.</p>
       </div>
       <div>
-        <p class="footer-heading">Navigate</p>
-        <a href="#" class="footer-link" onclick="showPage('home')">Home</a>
-        <a href="#" class="footer-link" onclick="showPage('home');document.getElementById('ritual').scrollIntoView({behavior:'smooth'})">Sunday Ritual</a>
-        <a href="#" class="footer-link" onclick="showPage('our-story')">Our Story</a>
-        <a href="#" class="footer-link" onclick="showPage('waitlist')">Join Waitlist</a>
+        <p class="footer-heading" data-i18n="footer_nav_heading">Navigate</p>
+        <a href="#" class="footer-link" onclick="showPage('home');return false;" data-i18n="tab_home_plain">Home</a>
+        <a href="#" class="footer-link" onclick="showPage('home');setTimeout(()=>document.getElementById('ritual')?.scrollIntoView({behavior:'smooth'}),150);return false;" data-i18n="nav_ritual">Sunday Ritual</a>
+        <a href="#" class="footer-link" onclick="showPage('our-story');return false;" data-i18n="nav_story">Our Story</a>
+        <a href="#" class="footer-link" onclick="showPage('waitlist');return false;" data-i18n="nav_join">Join Waitlist</a>
       </div>
       <div>
-        <p class="footer-heading">Connect</p>
+        <p class="footer-heading" data-i18n="footer_connect_heading">Connect</p>
         <a href="#" class="footer-link">@girlswhowalk</a>
         <a href="#" class="footer-link">hello@girlswhowalk.com</a>
-        <p style="font-size:0.8rem;font-style:italic;font-family:var(--serif);color:rgba(154,144,136,0.5);margin-top:0.75rem;">Currently in Madrid — growing slowly</p>
+        <p style="font-size:0.82rem;font-style:italic;font-family:var(--serif);color:rgba(155,145,136,0.38);margin-top:1.25rem;line-height:1.75;" data-i18n="footer_location">Currently in Mallorca<br>growing slowly.</p>
       </div>
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© 2025 Girls Who Walk. All rights reserved.</p>
-      <p class="footer-phrase">Not a fitness club. A feeling.</p>
+      <p class="footer-phrase" data-i18n="footer_phrase">Not a fitness club. A feeling.</p>
     </div>
   </div>
 </footer>
 
+
 <script>
-// ── Simple SPA page switcher ─────────────────────────────────────────────────
+/* ══════════════════════════════════════════════════════════
+   TRANSLATIONS — 6 idiomas
+   en · es · fr · it · de · ca (mallorquí/català)
+══════════════════════════════════════════════════════════ */
+const LANGS = {
+  en: {
+    tagline_sub:"Move With Intention", nav_about:"About", nav_ritual:"Sunday Ritual", nav_story:"Our Story", nav_join:"Join Waitlist",
+    tab_home:"/ Home", tab_about:"/about", tab_waitlist:"/waitlist", tab_home_plain:"Home",
+    hero_eyebrow:"A Sunday Movement", hero_h1_1:"Soft Power", hero_h1_2:"in Motion.",
+    hero_body:"Girls Who Walk is a curated Sunday ritual — early morning walks, good coffee, and real conversation with women who show up for themselves and each other.",
+    btn_join_waitlist:"Join the Waitlist", btn_learn_more:"Learn More", btn_apply:"Apply to Join", btn_submit:"Submit Application", scroll_hint:"Scroll to discover",
+    about_eyebrow:"The Movement", about_h1:"More than<br>a walk.",
+    about_p1:"We live in a world that worships speed. Girls Who Walk is a quiet refusal. A Sunday morning practice of moving slowly, breathing deeply, and connecting with women who choose presence over performance.",
+    about_p2:"There are no leaderboards. No pace requirements. No pressure to arrive perfectly put together. Just you, comfortable shoes, and a small circle of women who also needed this.",
+    about_p3:"This is your Sunday ritual now.",
+    stat_1:"Sunday<br>Morning", stat_2:"Women Per<br>Group", stat_3:"Conversations<br>Worth Having",
+    ritual_eyebrow:"The Sunday Ritual", ritual_h1:"A morning designed<br><em>to stay with you.</em>", ritual_sub:"Every Sunday. Same rhythm. Changing only by season, city, and the women who join.",
+    t1_title:"Arrive", t1_body:"A quiet corner of the city. You find us by a landmark, not a busy entrance. Small group already gathering. Someone hands you a coffee order slip.",
+    t2_title:"We Walk", t2_body:"No phones out. No headphones. A 45–60 minute route through the neighbourhood — scenic, unhurried, and always a little unexpected.",
+    t3_title:"Coffee Together", t3_body:"We settle into a local café with good light and real tables. Introductions happen naturally. Conversations run long. Nobody checks the time.",
+    t4_title:"Until Next Sunday", t4_body:"That's it. No agenda. No commitment beyond showing up. But somehow, you already feel like coming back.",
+    vision_eyebrow:"The Vision", vision_h1:"One ritual.<br><em>Many chapters.</em>", vision_body:"Girls Who Walk is a platform, not just a walk club. What begins on Sunday mornings is the foundation for an entirely different way of building community.",
+    card1_label:"Walk + Coffee", card1_h3:"Where it all begins.", card1_body:"Our founding ritual. A Sunday walk followed by an unhurried hour at a local café. This is the core. Everything else grows from here.",
+    card2_label:"Walk + Cowork", card2_h3:"Move your body. Then move your work forward.", card2_body:"A Sunday walk followed by a quiet coworking session. For women who want to create something alongside community.",
+    card3_label:"Walk + Pilates", card3_h3:"Two kinds of quiet strength.", card3_body:"Begin outside with our morning walk, then transition to a private Pilates session. A full Sunday morning for your body.",
+    card4_label:"Walk + Talks", card4_h3:"Movement, then meaning.", card4_body:"Our walk concludes with an intimate talk from a woman doing something remarkable. No stage. Just conversation in a room with good light.",
+    badge_active:"Active", badge_soon:"Coming Soon",
+    process_eyebrow:"The Process", process_h1:"How to join us.",
+    step1_title:"Apply", step1_body:"Fill out a short form. Tell us your city and a little about why you want to join. No CV required — just honesty.",
+    step2_title:"Reviewed", step2_body:"We read every application personally. We keep groups small intentionally, so we take our time.",
+    step3_title:"Selected", step3_body:"If there's a spot for you, we'll reach out with all the details — time, meeting point, and what to bring (just yourself).",
+    step4_title:"First Walk", step4_body:"Show up. Someone will be there. By the time coffee arrives, it will feel like you've known us for months.",
+    cta_eyebrow:"Limited Spots", cta_h2:"Your Sunday mornings<br><em style='color:var(--pink);'>are waiting.</em>",
+    cta_body:"We open spots in small batches. Apply now and we'll reach out when something opens in your city.", cta_free:"Free to join. Always will be.",
+    story_eyebrow:"Our Story", story_h1:"Built slowly.<br><em style='color:var(--charcoal-mid);'>On purpose.</em>",
+    story_start_h2:"How it started.", story_start_p1:'It started with one Sunday, one park, and four women who all said the same thing afterwards: "We should do this again."',
+    story_start_p2:"No apps. No group chats with 200 strangers. No performance. Just a walk, a table at a café, and the slow realisation that this was something we'd all been missing.",
+    story_start_p3:"Girls Who Walk grew from that one morning. It remains small because that's how it works best. The intimacy is the point.",
+    values_eyebrow:"Our Values", values_h1:"What we believe.",
+    v1_h3:"Slowness is radical.", v1_body:"We don't optimise the walk. There's no step count, no pace goal. The slowness is intentional — it's what makes space for real connection.",
+    v2_h3:"Small is a feature.", v2_body:"Every group has a maximum. Not because we want exclusivity, but because intimacy requires it. You can't truly connect with 40 people on a Sunday morning.",
+    v3_h3:"Community over content.", v3_body:"We are not building an Instagram aesthetic. We are building friendships. What you experience in person will always matter more than what gets posted.",
+    v4_h3:"Curation is care.", v4_body:"We review every application personally. This isn't gatekeeping — it's an act of care for every woman who shows up. We want the room to feel right.",
+    v5_h3:"Cities, not feeds.", v5_body:"Girls Who Walk grows city by city, not through viral moments. Each city gets its own rhythm, its own regular spots, its own community.",
+    v6_h3:"Presence over performance.", v6_body:"You don't need to arrive ready to network. You don't need a pitch. Come exactly as you are on a Sunday morning.",
+    grow_eyebrow:"How We Grow", grow_h2:"Slow, deliberate, rooted.",
+    grow_p1:"We are not trying to become a platform with millions of users. We are trying to build something that still feels meaningful in three years.",
+    grow_p2:"New cities open when there's a woman on the ground who understands the vision and has the network to do it right. No rapid scaling. No franchise model. Just trust.",
+    grow_p3:"If you're in a city that doesn't have Girls Who Walk yet, tell us on your waitlist application. You might be the one who starts it.",
+    wl_eyebrow:"Apply", wl_h1:"We'd love to<br><em>meet you.</em>",
+    wl_p1:"Groups are intentionally small. We open spots in batches and review every application personally.",
+    wl_p2:"Fill in the form and we'll reach out when something opens in your city. It's free. It always will be.",
+    trust_1:"No subscription fees", trust_2:"Small, curated groups", trust_3:"Personal review of every application", trust_4:"Expanding to new cities soon",
+    success_label:"Application Received", success_h2:"We'll be in touch.",
+    success_body:"Thank you for applying. We read every submission personally. If there's a spot for you, we'll reach out with everything you need to join your first walk.",
+    success_note:"In the meantime — go for a walk. It helps.",
+    field_name:"Full Name *", field_email:"Email Address *", field_city:"Your City *", field_ig:"Instagram Handle (optional)", field_why:"Why do you want to join? *",
+    err_name:"Please enter your name.", err_email:"Please enter a valid email address.", err_city:"Please enter your city.", err_why:"Please share a bit more — at least a sentence or two.",
+    form_note:"We never share your data. Ever.",
+    footer_tagline:"Slow down. Show up.<br>Walk together.", footer_nav_heading:"Navigate", footer_connect_heading:"Connect",
+    footer_location:"Currently in Mallorca<br>growing slowly.", footer_phrase:"Not a fitness club. A feeling."
+  },
+
+  es: {
+    tagline_sub:"Moverse con Intención", nav_about:"Quiénes somos", nav_ritual:"El Ritual del Domingo", nav_story:"Nuestra Historia", nav_join:"Únete a la lista",
+    tab_home:"/ Inicio", tab_about:"/nosotras", tab_waitlist:"/lista de espera", tab_home_plain:"Inicio",
+    hero_eyebrow:"Un movimiento dominical", hero_h1_1:"Poder suave", hero_h1_2:"en movimiento.",
+    hero_body:"Girls Who Walk es un ritual dominical — paseos al amanecer, buen café y conversaciones reales con mujeres que se presentan para ellas mismas y las demás.",
+    btn_join_waitlist:"Únete a la lista", btn_learn_more:"Saber más", btn_apply:"Solicitar unirse", btn_submit:"Enviar solicitud", scroll_hint:"Desliza para descubrir",
+    about_eyebrow:"El Movimiento", about_h1:"Más que<br>un paseo.",
+    about_p1:"Vivimos en un mundo que adora la velocidad. Girls Who Walk es un rechazo silencioso. Una práctica dominical de moverse despacio, respirar profundo y conectar con mujeres que eligen la presencia sobre la apariencia.",
+    about_p2:"No hay clasificaciones. No hay exigencias de ritmo. No hay presión por llegar perfecta. Solo tú, unos zapatos cómodos y un pequeño círculo de mujeres que también lo necesitaban.",
+    about_p3:"Este es tu ritual dominical ahora.",
+    stat_1:"Domingo<br>por la mañana", stat_2:"Mujeres por<br>grupo", stat_3:"Conversaciones<br>que valen la pena",
+    ritual_eyebrow:"El Ritual del Domingo", ritual_h1:"Una mañana diseñada<br><em>para quedarse contigo.</em>", ritual_sub:"Cada domingo. El mismo ritmo. Solo cambian la estación, la ciudad y las mujeres.",
+    t1_title:"Llegada", t1_body:"Un rincón tranquilo de la ciudad. Nos encontráis junto a un punto de referencia, no en una entrada concurrida. El grupo ya se está reuniendo. Alguien te pasa una nota para el café.",
+    t2_title:"Caminamos", t2_body:"Sin teléfonos. Sin auriculares. Una ruta de 45–60 minutos por el barrio — pintoresca, pausada y siempre un poco sorprendente.",
+    t3_title:"Café juntas", t3_body:"Nos instalamos en un café local con buena luz y mesas de verdad. Las presentaciones surgen solas. Las conversaciones se alargan. Nadie mira el reloj.",
+    t4_title:"Hasta el próximo domingo", t4_body:"Eso es todo. Sin agenda. Sin compromiso más allá de aparecer. Pero de alguna manera, ya tienes ganas de volver.",
+    vision_eyebrow:"La Visión", vision_h1:"Un ritual.<br><em>Muchos capítulos.</em>", vision_body:"Girls Who Walk es una plataforma, no solo un club de caminatas. Lo que comienza los domingos por la mañana es la base de una forma completamente diferente de construir comunidad.",
+    card1_label:"Paseo + Café", card1_h3:"Donde todo comienza.", card1_body:"Nuestro ritual fundacional. Un paseo dominical seguido de una hora tranquila en un café local. Este es el núcleo. Todo lo demás crece desde aquí.",
+    card2_label:"Paseo + Coworking", card2_h3:"Mueve tu cuerpo. Luego mueve tu trabajo.", card2_body:"Un paseo dominical seguido de una sesión tranquila de coworking. Para mujeres que quieren crear algo junto a su comunidad.",
+    card3_label:"Paseo + Pilates", card3_h3:"Dos tipos de fuerza silenciosa.", card3_body:"Comienza fuera con nuestro paseo matutino y luego pasa a una sesión privada de Pilates. Una mañana de domingo completa para tu cuerpo.",
+    card4_label:"Paseo + Charlas", card4_h3:"Movimiento, luego significado.", card4_body:"Nuestro paseo concluye con una charla íntima de una mujer que hace algo extraordinario. Sin escenario. Solo conversación en una sala con buena luz.",
+    badge_active:"Activo", badge_soon:"Próximamente",
+    process_eyebrow:"El Proceso", process_h1:"Cómo unirse.",
+    step1_title:"Solicita", step1_body:"Rellena un breve formulario. Cuéntanos tu ciudad y por qué quieres unirte. No se necesita CV — solo honestidad.",
+    step2_title:"Revisamos", step2_body:"Leemos cada solicitud personalmente. Mantenemos los grupos pequeños intencionalmente, así que nos tomamos nuestro tiempo.",
+    step3_title:"Seleccionadas", step3_body:"Si hay un lugar para ti, te contactaremos con todos los detalles — hora, punto de encuentro y qué traer (solo tú misma).",
+    step4_title:"Primer paseo", step4_body:"Aparece. Habrá alguien. Para cuando llegue el café, parecerá que nos conoces de hace meses.",
+    cta_eyebrow:"Plazas limitadas", cta_h2:"Tus mañanas de domingo<br><em style='color:var(--pink);'>te esperan.</em>",
+    cta_body:"Abrimos plazas en pequeños lotes. Solicita ahora y te avisamos cuando haya una en tu ciudad.", cta_free:"Gratis para siempre.",
+    story_eyebrow:"Nuestra Historia", story_h1:"Construido despacio.<br><em style='color:var(--charcoal-mid);'>Con intención.</em>",
+    story_start_h2:"Cómo empezó.", story_start_p1:'Todo empezó un domingo, en un parque, con cuatro mujeres que dijeron lo mismo después: "Deberíamos repetirlo."',
+    story_start_p2:"Sin apps. Sin grupos de chat de 200 desconocidas. Sin actuación. Solo un paseo, una mesa en un café y la lenta comprensión de que esto era algo que todas echábamos de menos.",
+    story_start_p3:"Girls Who Walk creció desde esa mañana. Sigue siendo pequeño porque así funciona mejor. La intimidad es el punto.",
+    values_eyebrow:"Nuestros Valores", values_h1:"Lo que creemos.",
+    v1_h3:"La lentitud es radical.", v1_body:"No optimizamos el paseo. No hay conteo de pasos ni objetivo de ritmo. La lentitud es intencional — es lo que crea espacio para la conexión real.",
+    v2_h3:"Lo pequeño es una característica.", v2_body:"Cada grupo tiene un máximo. No porque queramos exclusividad, sino porque la intimidad lo requiere. No puedes conectar de verdad con 40 personas un domingo por la mañana.",
+    v3_h3:"Comunidad sobre contenido.", v3_body:"No construimos una estética de Instagram. Construimos amistades. Lo que vives en persona siempre importará más que lo que se publica.",
+    v4_h3:"La curaduría es cuidado.", v4_body:"Revisamos cada solicitud personalmente. Esto no es elitismo — es un acto de cuidado hacia cada mujer que se presenta. Queremos que el ambiente sea el adecuado.",
+    v5_h3:"Ciudades, no feeds.", v5_body:"Girls Who Walk crece ciudad a ciudad, no a través de momentos virales. Cada ciudad tiene su propio ritmo, sus lugares habituales, su propia comunidad.",
+    v6_h3:"Presencia sobre apariencia.", v6_body:"No necesitas llegar lista para hacer networking. No necesitas un discurso. Ven exactamente como estás un domingo por la mañana.",
+    grow_eyebrow:"Cómo crecemos", grow_h2:"Despacio, con intención.",
+    grow_p1:"No intentamos convertirnos en una plataforma con millones de usuarias. Intentamos construir algo que siga siendo significativo dentro de tres años.",
+    grow_p2:"Las nuevas ciudades se abren cuando hay una mujer sobre el terreno que entiende la visión y tiene la red para hacerlo bien. Sin escala rápida. Sin modelo de franquicia. Solo confianza.",
+    grow_p3:"Si estás en una ciudad que aún no tiene Girls Who Walk, cuéntanoslo en tu solicitud. Puede que seas tú quien lo empiece.",
+    wl_eyebrow:"Solicita", wl_h1:"Nos encantaría<br><em>conocerte.</em>",
+    wl_p1:"Los grupos son intencionalmente pequeños. Abrimos plazas por lotes y revisamos cada solicitud personalmente.",
+    wl_p2:"Rellena el formulario y te avisamos cuando haya una plaza en tu ciudad. Es gratis. Siempre lo será.",
+    trust_1:"Sin cuotas de suscripción", trust_2:"Grupos pequeños y cuidados", trust_3:"Revisión personal de cada solicitud", trust_4:"Próxima expansión a nuevas ciudades",
+    success_label:"Solicitud recibida", success_h2:"Estaremos en contacto.",
+    success_body:"Gracias por solicitar. Leemos cada envío personalmente. Si hay un lugar para ti, te contactaremos con todo lo que necesitas para unirte a tu primer paseo.",
+    success_note:"Mientras tanto — sal a caminar. Ayuda.",
+    field_name:"Nombre completo *", field_email:"Correo electrónico *", field_city:"Tu ciudad *", field_ig:"Usuario de Instagram (opcional)", field_why:"¿Por qué quieres unirte? *",
+    err_name:"Por favor, introduce tu nombre.", err_email:"Por favor, introduce un correo válido.", err_city:"Por favor, introduce tu ciudad.", err_why:"Cuéntanos un poco más — al menos una o dos frases.",
+    form_note:"Nunca compartimos tus datos. Nunca.",
+    footer_tagline:"Despacio. Presente.<br>Juntas.", footer_nav_heading:"Navegar", footer_connect_heading:"Conectar",
+    footer_location:"Ahora en Mallorca<br>creciendo despacio.", footer_phrase:"No es un club de fitness. Es un sentimiento."
+  },
+
+  fr: {
+    tagline_sub:"Bouger avec Intention", nav_about:"À propos", nav_ritual:"Rituel du Dimanche", nav_story:"Notre Histoire", nav_join:"Rejoindre la liste",
+    tab_home:"/ Accueil", tab_about:"/à propos", tab_waitlist:"/liste d'attente", tab_home_plain:"Accueil",
+    hero_eyebrow:"Un mouvement dominical", hero_h1_1:"Pouvoir doux", hero_h1_2:"en mouvement.",
+    hero_body:"Girls Who Walk est un rituel dominical — promenades matinales, bon café et vraies conversations avec des femmes qui se présentent pour elles-mêmes et pour les autres.",
+    btn_join_waitlist:"Rejoindre la liste", btn_learn_more:"En savoir plus", btn_apply:"Faire une demande", btn_submit:"Envoyer la demande", scroll_hint:"Faites défiler",
+    about_eyebrow:"Le Mouvement", about_h1:"Plus qu'une<br>promenade.",
+    about_p1:"Nous vivons dans un monde qui voue un culte à la vitesse. Girls Who Walk est un refus silencieux. Une pratique dominicale de marcher lentement, respirer profondément et se connecter avec des femmes qui choisissent la présence plutôt que la performance.",
+    about_p2:"Pas de classements. Pas d'exigences de rythme. Pas de pression d'arriver parfaite. Juste vous, des chaussures confortables et un petit cercle de femmes qui en avaient besoin elles aussi.",
+    about_p3:"C'est votre rituel du dimanche maintenant.",
+    stat_1:"Dimanche<br>matin", stat_2:"Femmes par<br>groupe", stat_3:"Conversations<br>qui valent la peine",
+    ritual_eyebrow:"Le Rituel du Dimanche", ritual_h1:"Un matin conçu<br><em>pour rester avec vous.</em>", ritual_sub:"Chaque dimanche. Le même rythme. Changeant seulement selon la saison, la ville et les femmes.",
+    t1_title:"Arrivée", t1_body:"Un coin tranquille de la ville. Vous nous trouvez près d'un repère, pas d'une entrée animée. Le petit groupe se forme déjà. Quelqu'un vous glisse un bon pour le café.",
+    t2_title:"On marche", t2_body:"Pas de téléphones. Pas d'écouteurs. Un parcours de 45 à 60 minutes dans le quartier — pittoresque, sans hâte, et toujours un peu inattendu.",
+    t3_title:"Café ensemble", t3_body:"On s'installe dans un café local avec une belle lumière et de vraies tables. Les présentations se font naturellement. Les conversations s'étirent. Personne ne regarde l'heure.",
+    t4_title:"Jusqu'au prochain dimanche", t4_body:"C'est tout. Pas d'agenda. Pas d'engagement au-delà de se présenter. Mais d'une façon ou d'une autre, vous avez déjà envie de revenir.",
+    vision_eyebrow:"La Vision", vision_h1:"Un rituel.<br><em>De nombreux chapitres.</em>", vision_body:"Girls Who Walk est une plateforme, pas seulement un club de marche. Ce qui commence le dimanche matin est le fondement d'une façon entièrement différente de créer une communauté.",
+    card1_label:"Marche + Café", card1_h3:"Là où tout commence.", card1_body:"Notre rituel fondateur. Une marche dominicale suivie d'une heure paisible dans un café local. C'est le cœur. Tout le reste grandit à partir d'ici.",
+    card2_label:"Marche + Coworking", card2_h3:"Bougez votre corps. Puis avancez dans votre travail.", card2_body:"Une marche dominicale suivie d'une session de coworking tranquille. Pour les femmes qui veulent créer quelque chose aux côtés d'une communauté.",
+    card3_label:"Marche + Pilates", card3_h3:"Deux types de force silencieuse.", card3_body:"Commencez dehors avec notre marche matinale, puis passez à une session privée de Pilates. Une matinée du dimanche complète pour votre corps.",
+    card4_label:"Marche + Conférences", card4_h3:"Le mouvement, puis le sens.", card4_body:"Notre marche se conclut par une conférence intime d'une femme qui fait quelque chose de remarquable. Pas de scène. Juste une conversation dans une salle lumineuse.",
+    badge_active:"Actif", badge_soon:"Bientôt",
+    process_eyebrow:"Le Processus", process_h1:"Comment nous rejoindre.",
+    step1_title:"Postulez", step1_body:"Remplissez un court formulaire. Dites-nous votre ville et pourquoi vous souhaitez rejoindre. Pas de CV — juste de la sincérité.",
+    step2_title:"Examen", step2_body:"Nous lisons chaque candidature personnellement. Nous gardons les groupes petits intentionnellement, alors nous prenons notre temps.",
+    step3_title:"Sélection", step3_body:"Si une place est disponible pour vous, nous vous contacterons avec tous les détails — heure, point de rendez-vous et ce qu'il faut apporter (juste vous-même).",
+    step4_title:"Première marche", step4_body:"Présentez-vous. Quelqu'un sera là. Le temps que le café arrive, vous aurez l'impression de nous connaître depuis des mois.",
+    cta_eyebrow:"Places limitées", cta_h2:"Vos matins du dimanche<br><em style='color:var(--pink);'>vous attendent.</em>",
+    cta_body:"Nous ouvrons des places par petits lots. Postulez maintenant et nous vous contacterons quand une place s'ouvre dans votre ville.", cta_free:"Gratuit pour toujours.",
+    story_eyebrow:"Notre Histoire", story_h1:"Construit lentement.<br><em style='color:var(--charcoal-mid);'>Avec intention.</em>",
+    story_start_h2:"Comment ça a commencé.", story_start_p1:'Tout a commencé un dimanche, dans un parc, avec quatre femmes qui ont toutes dit la même chose après : "On devrait recommencer."',
+    story_start_p2:"Pas d'applications. Pas de groupes de discussion avec 200 inconnues. Pas de performance. Juste une marche, une table dans un café et la réalisation progressive que c'était quelque chose qui nous manquait à toutes.",
+    story_start_p3:"Girls Who Walk a grandi à partir de cette matinée. Il reste petit parce que c'est ainsi qu'il fonctionne le mieux. L'intimité est le point central.",
+    values_eyebrow:"Nos Valeurs", values_h1:"Ce en quoi nous croyons.",
+    v1_h3:"La lenteur est radicale.", v1_body:"Nous n'optimisons pas la marche. Il n'y a pas de comptage de pas, pas d'objectif de rythme. La lenteur est intentionnelle — c'est ce qui crée l'espace pour une vraie connexion.",
+    v2_h3:"La petite taille est une caractéristique.", v2_body:"Chaque groupe a un maximum. Non pas parce que nous voulons l'exclusivité, mais parce que l'intimité le requiert. On ne peut pas vraiment se connecter avec 40 personnes un dimanche matin.",
+    v3_h3:"La communauté avant le contenu.", v3_body:"Nous ne construisons pas une esthétique Instagram. Nous construisons des amitiés. Ce que vous vivez en personne comptera toujours plus que ce qui est publié.",
+    v4_h3:"La curation est un soin.", v4_body:"Nous examinons chaque candidature personnellement. Ce n'est pas du filtrage — c'est un acte de soin pour chaque femme qui se présente. Nous voulons que l'atmosphère soit juste.",
+    v5_h3:"Des villes, pas des fils d'actualité.", v5_body:"Girls Who Walk grandit ville par ville, pas à travers des moments viraux. Chaque ville a son propre rythme, ses propres endroits habituels, sa propre communauté.",
+    v6_h3:"La présence sur la performance.", v6_body:"Vous n'avez pas besoin d'arriver prête à networker. Vous n'avez pas besoin d'un discours. Venez exactement comme vous êtes un dimanche matin.",
+    grow_eyebrow:"Comment nous grandissons", grow_h2:"Lentement, avec soin.",
+    grow_p1:"Nous ne cherchons pas à devenir une plateforme avec des millions d'utilisatrices. Nous cherchons à construire quelque chose qui soit encore significatif dans trois ans.",
+    grow_p2:"Les nouvelles villes s'ouvrent quand il y a une femme sur le terrain qui comprend la vision et a le réseau pour le faire correctement. Pas de croissance rapide. Pas de modèle de franchise. Juste la confiance.",
+    grow_p3:"Si vous êtes dans une ville qui n'a pas encore Girls Who Walk, dites-le nous dans votre candidature. Vous pourriez être celle qui le lance.",
+    wl_eyebrow:"Postulez", wl_h1:"Nous serions ravies<br><em>de vous rencontrer.</em>",
+    wl_p1:"Les groupes sont intentionnellement petits. Nous ouvrons des places par lots et examinons chaque candidature personnellement.",
+    wl_p2:"Remplissez le formulaire et nous vous contacterons quand une place s'ouvre dans votre ville. C'est gratuit. Ça le sera toujours.",
+    trust_1:"Pas de frais d'abonnement", trust_2:"Petits groupes curatés", trust_3:"Examen personnel de chaque candidature", trust_4:"Expansion vers de nouvelles villes bientôt",
+    success_label:"Candidature reçue", success_h2:"Nous reviendrons vers vous.",
+    success_body:"Merci d'avoir postulé. Nous lisons chaque soumission personnellement. Si une place est disponible pour vous, nous vous contacterons avec tout ce dont vous avez besoin pour rejoindre votre première marche.",
+    success_note:"En attendant — allez marcher. Ça aide.",
+    field_name:"Nom complet *", field_email:"Adresse e-mail *", field_city:"Votre ville *", field_ig:"Pseudo Instagram (optionnel)", field_why:"Pourquoi souhaitez-vous rejoindre ? *",
+    err_name:"Veuillez entrer votre nom.", err_email:"Veuillez entrer une adresse e-mail valide.", err_city:"Veuillez entrer votre ville.", err_why:"Partagez un peu plus — au moins une ou deux phrases.",
+    form_note:"Nous ne partageons jamais vos données. Jamais.",
+    footer_tagline:"Ralentissez. Soyez là.<br>Marchons ensemble.", footer_nav_heading:"Navigation", footer_connect_heading:"Contact",
+    footer_location:"Actuellement à Majorque<br>en croissance lente.", footer_phrase:"Pas un club de fitness. Un sentiment."
+  },
+
+  it: {
+    tagline_sub:"Muoversi con Intenzione", nav_about:"Chi siamo", nav_ritual:"Rituale della Domenica", nav_story:"La nostra storia", nav_join:"Unisciti alla lista",
+    tab_home:"/ Home", tab_about:"/chi siamo", tab_waitlist:"/lista d'attesa", tab_home_plain:"Home",
+    hero_eyebrow:"Un movimento domenicale", hero_h1_1:"Potere gentile", hero_h1_2:"in movimento.",
+    hero_body:"Girls Who Walk è un rituale domenicale — passeggiate mattutine, buon caffè e conversazioni vere con donne che si presentano per se stesse e per le altre.",
+    btn_join_waitlist:"Unisciti alla lista", btn_learn_more:"Scopri di più", btn_apply:"Fai domanda", btn_submit:"Invia domanda", scroll_hint:"Scorri per scoprire",
+    about_eyebrow:"Il Movimento", about_h1:"Più di una<br>passeggiata.",
+    about_p1:"Viviamo in un mondo che adora la velocità. Girls Who Walk è un rifiuto silenzioso. Una pratica domenicale di muoversi lentamente, respirare profondamente e connettersi con donne che scelgono la presenza rispetto alla performance.",
+    about_p2:"Nessuna classifica. Nessun requisito di ritmo. Nessuna pressione di arrivare perfetta. Solo tu, scarpe comode e un piccolo cerchio di donne che ne avevano bisogno anche loro.",
+    about_p3:"Questo è il tuo rituale domenicale ora.",
+    stat_1:"Domenica<br>mattina", stat_2:"Donne per<br>gruppo", stat_3:"Conversazioni<br>che vale la pena avere",
+    ritual_eyebrow:"Il Rituale della Domenica", ritual_h1:"Una mattina progettata<br><em>per restare con te.</em>", ritual_sub:"Ogni domenica. Lo stesso ritmo. Cambia solo la stagione, la città e le donne.",
+    t1_title:"Arrivo", t1_body:"Un angolo tranquillo della città. Ci trovate vicino a un punto di riferimento, non a un ingresso affollato. Il piccolo gruppo si sta già riunendo. Qualcuno ti passa un bigliettino per il caffè.",
+    t2_title:"Camminiamo", t2_body:"Niente telefoni. Niente cuffie. Un percorso di 45–60 minuti nel quartiere — pittoresco, senza fretta e sempre un po' inaspettato.",
+    t3_title:"Caffè insieme", t3_body:"Ci sistemiamo in un caffè locale con bella luce e tavoli veri. Le presentazioni avvengono naturalmente. Le conversazioni si allungano. Nessuno guarda l'ora.",
+    t4_title:"Fino alla prossima domenica", t4_body:"Tutto qui. Nessun programma. Nessun impegno oltre al presentarsi. Ma in qualche modo, hai già voglia di tornare.",
+    vision_eyebrow:"La Visione", vision_h1:"Un rituale.<br><em>Molti capitoli.</em>", vision_body:"Girls Who Walk è una piattaforma, non solo un club di camminate. Ciò che inizia la domenica mattina è la base di un modo completamente diverso di costruire comunità.",
+    card1_label:"Passeggiata + Caffè", card1_h3:"Dove tutto comincia.", card1_body:"Il nostro rituale fondante. Una passeggiata domenicale seguita da un'ora tranquilla in un caffè locale. Questo è il nucleo. Tutto il resto cresce da qui.",
+    card2_label:"Passeggiata + Coworking", card2_h3:"Muovi il corpo. Poi muovi il lavoro.", card2_body:"Una passeggiata domenicale seguita da una sessione tranquilla di coworking. Per donne che vogliono creare qualcosa insieme a una comunità.",
+    card3_label:"Passeggiata + Pilates", card3_h3:"Due tipi di forza silenziosa.", card3_body:"Inizia fuori con la nostra passeggiata mattutina, poi passa a una sessione privata di Pilates. Una domenica mattina completa per il tuo corpo.",
+    card4_label:"Passeggiata + Talk", card4_h3:"Movimento, poi significato.", card4_body:"La nostra passeggiata si conclude con un talk intimo di una donna che fa qualcosa di straordinario. Nessun palco. Solo conversazione in una stanza con buona luce.",
+    badge_active:"Attivo", badge_soon:"Prossimamente",
+    process_eyebrow:"Il Processo", process_h1:"Come unirti a noi.",
+    step1_title:"Candidati", step1_body:"Compila un breve modulo. Dicci la tua città e perché vuoi unirti. Nessun CV richiesto — solo onestà.",
+    step2_title:"Revisione", step2_body:"Leggiamo ogni candidatura personalmente. Manteniamo i gruppi piccoli intenzionalmente, quindi prendiamo il nostro tempo.",
+    step3_title:"Selezione", step3_body:"Se c'è un posto per te, ti contatteremo con tutti i dettagli — orario, punto di incontro e cosa portare (solo te stessa).",
+    step4_title:"Prima passeggiata", step4_body:"Presentati. Ci sarà qualcuno. Quando arriverà il caffè, sembrerà che ci conosciate da mesi.",
+    cta_eyebrow:"Posti limitati", cta_h2:"Le tue domeniche mattina<br><em style='color:var(--pink);'>ti aspettano.</em>",
+    cta_body:"Apriamo i posti in piccoli lotti. Candidati ora e ti contatteremo quando si aprirà qualcosa nella tua città.", cta_free:"Gratuito. Per sempre.",
+    story_eyebrow:"La Nostra Storia", story_h1:"Costruito lentamente.<br><em style='color:var(--charcoal-mid);'>Con intenzione.</em>",
+    story_start_h2:"Come è iniziato.", story_start_p1:'È iniziato con una domenica, un parco e quattro donne che hanno detto tutte la stessa cosa dopo: "Dovremmo rifarlo."',
+    story_start_p2:"Niente app. Niente gruppi chat con 200 sconosciute. Niente performance. Solo una passeggiata, un tavolo in un caffè e la lenta realizzazione che questo era qualcosa che ci mancava a tutte.",
+    story_start_p3:"Girls Who Walk è cresciuto da quella mattina. Rimane piccolo perché è così che funziona meglio. L'intimità è il punto.",
+    values_eyebrow:"I Nostri Valori", values_h1:"In cosa crediamo.",
+    v1_h3:"La lentezza è radicale.", v1_body:"Non ottimizziamo la passeggiata. Non c'è conteggio di passi, nessun obiettivo di ritmo. La lentezza è intenzionale — è ciò che crea spazio per una connessione reale.",
+    v2_h3:"Il piccolo è una caratteristica.", v2_body:"Ogni gruppo ha un massimo. Non perché vogliamo l'esclusività, ma perché l'intimità lo richiede. Non puoi davvero connetterti con 40 persone una domenica mattina.",
+    v3_h3:"Comunità sopra il contenuto.", v3_body:"Non stiamo costruendo un'estetica Instagram. Stiamo costruendo amicizie. Ciò che vivi di persona conterà sempre più di ciò che viene pubblicato.",
+    v4_h3:"La cura è selezione.", v4_body:"Esaminiamo ogni candidatura personalmente. Non è elitismo — è un atto di cura per ogni donna che si presenta. Vogliamo che l'atmosfera sia giusta.",
+    v5_h3:"Città, non feed.", v5_body:"Girls Who Walk cresce città per città, non attraverso momenti virali. Ogni città ha il suo ritmo, i suoi posti abituali, la sua comunità.",
+    v6_h3:"Presenza sopra performance.", v6_body:"Non hai bisogno di arrivare pronta a fare networking. Non hai bisogno di un discorso. Vieni esattamente come sei una domenica mattina.",
+    grow_eyebrow:"Come cresciamo", grow_h2:"Lento, deliberato, radicato.",
+    grow_p1:"Non stiamo cercando di diventare una piattaforma con milioni di utenti. Stiamo cercando di costruire qualcosa che abbia ancora senso tra tre anni.",
+    grow_p2:"Le nuove città si aprono quando c'è una donna sul campo che capisce la visione e ha la rete per farlo bene. Nessuna crescita rapida. Nessun modello di franchising. Solo fiducia.",
+    grow_p3:"Se sei in una città che non ha ancora Girls Who Walk, dimmelo nella tua candidatura. Potresti essere tu a iniziarlo.",
+    wl_eyebrow:"Candidati", wl_h1:"Ci farebbe piacere<br><em>conoscerti.</em>",
+    wl_p1:"I gruppi sono intenzionalmente piccoli. Apriamo i posti in lotti e esaminiamo ogni candidatura personalmente.",
+    wl_p2:"Compila il modulo e ti contatteremo quando si aprirà un posto nella tua città. È gratuito. Lo sarà sempre.",
+    trust_1:"Nessuna quota di abbonamento", trust_2:"Gruppi piccoli e curati", trust_3:"Revisione personale di ogni candidatura", trust_4:"Espansione in nuove città presto",
+    success_label:"Candidatura ricevuta", success_h2:"Ci faremo vivi.",
+    success_body:"Grazie per aver candidato. Leggiamo ogni invio personalmente. Se c'è un posto per te, ti contatteremo con tutto ciò di cui hai bisogno per partecipare alla tua prima passeggiata.",
+    success_note:"Nel frattempo — vai a fare una passeggiata. Aiuta.",
+    field_name:"Nome completo *", field_email:"Indirizzo email *", field_city:"La tua città *", field_ig:"Account Instagram (opzionale)", field_why:"Perché vuoi unirti? *",
+    err_name:"Inserisci il tuo nome.", err_email:"Inserisci un indirizzo email valido.", err_city:"Inserisci la tua città.", err_why:"Condividi un po' di più — almeno una o due frasi.",
+    form_note:"Non condividiamo mai i tuoi dati. Mai.",
+    footer_tagline:"Rallenta. Presentati.<br>Cammina insieme.", footer_nav_heading:"Naviga", footer_connect_heading:"Contatti",
+    footer_location:"Attualmente a Maiorca<br>crescendo lentamente.", footer_phrase:"Non è un club fitness. È una sensazione."
+  },
+
+  de: {
+    tagline_sub:"Bewegen mit Intention", nav_about:"Über uns", nav_ritual:"Sonntags-Ritual", nav_story:"Unsere Geschichte", nav_join:"Warteliste beitreten",
+    tab_home:"/ Start", tab_about:"/über uns", tab_waitlist:"/warteliste", tab_home_plain:"Start",
+    hero_eyebrow:"Eine Sonntagsbewegung", hero_h1_1:"Sanfte Kraft", hero_h1_2:"in Bewegung.",
+    hero_body:"Girls Who Walk ist ein kuratiertes Sonntagsritual — frühe Morgenspaziergänge, guter Kaffee und echte Gespräche mit Frauen, die für sich selbst und füreinander da sind.",
+    btn_join_waitlist:"Warteliste beitreten", btn_learn_more:"Mehr erfahren", btn_apply:"Bewerben", btn_submit:"Bewerbung absenden", scroll_hint:"Zum Entdecken scrollen",
+    about_eyebrow:"Die Bewegung", about_h1:"Mehr als ein<br>Spaziergang.",
+    about_p1:"Wir leben in einer Welt, die Geschwindigkeit vergöttert. Girls Who Walk ist eine stille Weigerung. Eine sonntagliche Praxis des langsamen Gehens, tiefen Atmens und der Verbindung mit Frauen, die Präsenz über Leistung wählen.",
+    about_p2:"Keine Ranglisten. Keine Tempoanforderungen. Kein Druck, perfekt anzukommen. Nur du, bequeme Schuhe und ein kleiner Kreis von Frauen, die das auch gebraucht haben.",
+    about_p3:"Das ist jetzt dein Sonntagsritual.",
+    stat_1:"Sonntag<br>morgen", stat_2:"Frauen pro<br>Gruppe", stat_3:"Gespräche, die<br>es wert sind",
+    ritual_eyebrow:"Das Sonntagsritual", ritual_h1:"Ein Morgen, der<br><em>bei dir bleibt.</em>", ritual_sub:"Jeden Sonntag. Gleicher Rhythmus. Nur Jahreszeit, Stadt und Frauen ändern sich.",
+    t1_title:"Ankommen", t1_body:"Eine ruhige Ecke der Stadt. Ihr findet uns an einem Wahrzeichen, nicht an einem belebten Eingang. Die kleine Gruppe sammelt sich bereits. Jemand reicht dir einen Kaffeezettel.",
+    t2_title:"Wir gehen", t2_body:"Keine Handys raus. Keine Kopfhörer. Eine 45–60-minütige Route durch das Viertel — malerisch, gemächlich und immer etwas unerwartet.",
+    t3_title:"Kaffee zusammen", t3_body:"Wir lassen uns in einem lokalen Café mit gutem Licht und echten Tischen nieder. Vorstellungen passieren natürlich. Gespräche laufen lang. Niemand schaut auf die Uhr.",
+    t4_title:"Bis zum nächsten Sonntag", t4_body:"Das war's. Keine Agenda. Kein Engagement über das Erscheinen hinaus. Aber irgendwie willst du schon jetzt wiederkommen.",
+    vision_eyebrow:"Die Vision", vision_h1:"Ein Ritual.<br><em>Viele Kapitel.</em>", vision_body:"Girls Who Walk ist eine Plattform, nicht nur ein Wanderclub. Was sonntags morgens beginnt, ist das Fundament für eine völlig andere Art, Gemeinschaft aufzubauen.",
+    card1_label:"Spaziergang + Kaffee", card1_h3:"Wo alles beginnt.", card1_body:"Unser Gründungsritual. Ein Sonntagsspaziergang gefolgt von einer gemächlichen Stunde in einem lokalen Café. Das ist der Kern. Alles andere wächst von hier.",
+    card2_label:"Spaziergang + Coworking", card2_h3:"Bewege deinen Körper. Dann bewege deine Arbeit vorwärts.", card2_body:"Ein Sonntagsspaziergang gefolgt von einer ruhigen Coworking-Session. Für Frauen, die etwas neben einer Gemeinschaft erschaffen wollen.",
+    card3_label:"Spaziergang + Pilates", card3_h3:"Zwei Arten stiller Stärke.", card3_body:"Beginne draußen mit unserem Morgensapziergang, dann wechsle zu einer privaten Pilates-Session. Ein vollständiger Sonntagmorgen für deinen Körper.",
+    card4_label:"Spaziergang + Vorträge", card4_h3:"Bewegung, dann Bedeutung.", card4_body:"Unser Spaziergang endet mit einem intimen Vortrag einer Frau, die etwas Bemerkenswertes tut. Keine Bühne. Nur Gespräch in einem Raum mit gutem Licht.",
+    badge_active:"Aktiv", badge_soon:"Demnächst",
+    process_eyebrow:"Der Prozess", process_h1:"Wie du mitmachst.",
+    step1_title:"Bewerben", step1_body:"Fülle ein kurzes Formular aus. Sag uns deine Stadt und warum du beitreten möchtest. Kein Lebenslauf nötig — nur Ehrlichkeit.",
+    step2_title:"Prüfung", step2_body:"Wir lesen jede Bewerbung persönlich. Wir halten die Gruppen bewusst klein, also nehmen wir uns Zeit.",
+    step3_title:"Auswahl", step3_body:"Wenn es einen Platz für dich gibt, melden wir uns mit allen Details — Zeit, Treffpunkt und was mitgebracht werden soll (nur dich selbst).",
+    step4_title:"Erster Spaziergang", step4_body:"Erscheine. Jemand wird da sein. Bis der Kaffee kommt, wird es sich anfühlen, als würdest du uns seit Monaten kennen.",
+    cta_eyebrow:"Begrenzte Plätze", cta_h2:"Deine Sonntagmorgen<br><em style='color:var(--pink);'>warten auf dich.</em>",
+    cta_body:"Wir öffnen Plätze in kleinen Chargen. Bewirb dich jetzt und wir melden uns, wenn sich etwas in deiner Stadt öffnet.", cta_free:"Kostenlos. Für immer.",
+    story_eyebrow:"Unsere Geschichte", story_h1:"Langsam gebaut.<br><em style='color:var(--charcoal-mid);'>Mit Absicht.</em>",
+    story_start_h2:"Wie es begann.", story_start_p1:'Es begann an einem Sonntag, einem Park und vier Frauen, die danach alle dasselbe sagten: "Das sollten wir wiederholen."',
+    story_start_p2:"Keine Apps. Keine Gruppenchats mit 200 Fremden. Keine Vorführung. Nur ein Spaziergang, ein Tisch in einem Café und die langsame Erkenntnis, dass das etwas war, das uns allen gefehlt hat.",
+    story_start_p3:"Girls Who Walk wuchs aus diesem Morgen heraus. Es bleibt klein, weil es so am besten funktioniert. Die Intimität ist das Ziel.",
+    values_eyebrow:"Unsere Werte", values_h1:"Was wir glauben.",
+    v1_h3:"Langsamkeit ist radikal.", v1_body:"Wir optimieren den Spaziergang nicht. Es gibt keine Schrittzählung, kein Tempoziel. Die Langsamkeit ist intentional — sie schafft Raum für echte Verbindung.",
+    v2_h3:"Klein sein ist ein Merkmal.", v2_body:"Jede Gruppe hat ein Maximum. Nicht weil wir Exklusivität wollen, sondern weil Intimität sie erfordert. Du kannst dich nicht wirklich mit 40 Menschen an einem Sonntagmorgen verbinden.",
+    v3_h3:"Gemeinschaft über Inhalt.", v3_body:"Wir bauen keine Instagram-Ästhetik auf. Wir bauen Freundschaften auf. Was du persönlich erlebst, wird immer mehr zählen als das, was gepostet wird.",
+    v4_h3:"Kuration ist Fürsorge.", v4_body:"Wir prüfen jede Bewerbung persönlich. Das ist keine Exklusivität — es ist ein Akt der Fürsorge für jede Frau, die erscheint. Wir wollen, dass die Atmosphäre stimmt.",
+    v5_h3:"Städte, nicht Feeds.", v5_body:"Girls Who Walk wächst Stadt für Stadt, nicht durch virale Momente. Jede Stadt hat ihren eigenen Rhythmus, ihre eigenen Stammplätze, ihre eigene Gemeinschaft.",
+    v6_h3:"Präsenz über Leistung.", v6_body:"Du musst nicht bereit zum Netzwerken ankommen. Du brauchst keinen Pitch. Komm genau so, wie du sonntags morgens bist.",
+    grow_eyebrow:"Wie wir wachsen", grow_h2:"Langsam, bewusst, verwurzelt.",
+    grow_p1:"Wir versuchen nicht, eine Plattform mit Millionen von Nutzerinnen zu werden. Wir versuchen, etwas aufzubauen, das in drei Jahren noch bedeutsam ist.",
+    grow_p2:"Neue Städte öffnen, wenn es eine Frau vor Ort gibt, die die Vision versteht und das Netzwerk hat, es richtig zu machen. Kein schnelles Wachstum. Kein Franchise-Modell. Nur Vertrauen.",
+    grow_p3:"Wenn du in einer Stadt bist, die noch kein Girls Who Walk hat, sag es uns in deiner Bewerbung. Du könntest diejenige sein, die es startet.",
+    wl_eyebrow:"Bewerben", wl_h1:"Wir würden dich<br><em>gerne kennenlernen.</em>",
+    wl_p1:"Die Gruppen sind bewusst klein. Wir öffnen Plätze chargenweise und prüfen jede Bewerbung persönlich.",
+    wl_p2:"Fülle das Formular aus und wir melden uns, wenn sich ein Platz in deiner Stadt öffnet. Es ist kostenlos. Das wird es immer sein.",
+    trust_1:"Keine Abonnementgebühren", trust_2:"Kleine, kuratierte Gruppen", trust_3:"Persönliche Prüfung jeder Bewerbung", trust_4:"Expansion in neue Städte bald",
+    success_label:"Bewerbung erhalten", success_h2:"Wir melden uns.",
+    success_body:"Danke für deine Bewerbung. Wir lesen jede Einsendung persönlich. Wenn es einen Platz für dich gibt, melden wir uns mit allem, was du brauchst, um deinem ersten Spaziergang beizutreten.",
+    success_note:"In der Zwischenzeit — geh spazieren. Es hilft.",
+    field_name:"Vollständiger Name *", field_email:"E-Mail-Adresse *", field_city:"Deine Stadt *", field_ig:"Instagram-Nutzername (optional)", field_why:"Warum möchtest du mitmachen? *",
+    err_name:"Bitte gib deinen Namen ein.", err_email:"Bitte gib eine gültige E-Mail-Adresse ein.", err_city:"Bitte gib deine Stadt ein.", err_why:"Bitte teile etwas mehr mit — mindestens ein oder zwei Sätze.",
+    form_note:"Wir teilen deine Daten niemals. Niemals.",
+    footer_tagline:"Langsamer werden. Erscheinen.<br>Zusammen gehen.", footer_nav_heading:"Navigation", footer_connect_heading:"Kontakt",
+    footer_location:"Derzeit auf Mallorca<br>langsam wachsend.", footer_phrase:"Kein Fitnessclub. Ein Gefühl."
+  },
+
+  ca: {
+    tagline_sub:"Moure's amb Intenció", nav_about:"Qui som", nav_ritual:"El Ritual del Diumenge", nav_story:"La nostra história", nav_join:"Uneix-te a la llista",
+    tab_home:"/ Inici", tab_about:"/qui som", tab_waitlist:"/llista d'espera", tab_home_plain:"Inici",
+    hero_eyebrow:"Un moviment diumenguer", hero_h1_1:"Poder suau", hero_h1_2:"en moviment.",
+    hero_body:"Girls Who Walk és un ritual diumenguer — passejades a primera hora del matí, bon cafè i converses reals amb dones que es presenten per elles mateixes i les unes per les altres.",
+    btn_join_waitlist:"Uneix-te a la llista", btn_learn_more:"Saber-ne més", btn_apply:"Sol·licitar unir-se", btn_submit:"Enviar sol·licitud", scroll_hint:"Fes scroll per descobrir",
+    about_eyebrow:"El Moviment", about_h1:"Més que<br>una passejada.",
+    about_p1:"Vivim en un món que adora la velocitat. Girls Who Walk és un rebuig silenciós. Una pràctica diumengera de moure's a poc a poc, respirar fondo i connectar amb dones que trien la presència per sobre de l'aparença.",
+    about_p2:"No hi ha classificacions. No hi ha exigències de ritme. No hi ha pressió per arribar perfecta. Només tu, unes sabates còmodes i un petit cercle de dones que també ho necessitaven.",
+    about_p3:"Aquest és ara el teu ritual diumenguer.",
+    stat_1:"Diumenge<br>al matí", stat_2:"Dones per<br>grup", stat_3:"Converses que<br>val la pena tenir",
+    ritual_eyebrow:"El Ritual del Diumenge", ritual_h1:"Un matí dissenyat<br><em>per quedar-se amb tu.</em>", ritual_sub:"Cada diumenge. El mateix ritme. Canvia només la temporada, la ciutat i les dones.",
+    t1_title:"Arribada", t1_body:"Un racó tranquil de la ciutat. Ens trobes prop d'un punt de referència, no d'una entrada concorreguda. El petit grup ja s'està reunint. Algú et passa una nota per al cafè.",
+    t2_title:"Caminem", t2_body:"Sense telèfons. Sense auriculars. Un recorregut de 45–60 minuts pel barri — pintoresc, sense pressa i sempre una mica inesperat.",
+    t3_title:"Cafè juntes", t3_body:"Ens instal·lem en un cafè local amb bona llum i taules de debò. Les presentacions surten soles. Les converses s'allarguen. Ningú mira el rellotge.",
+    t4_title:"Fins al proper diumenge", t4_body:"Ja està. Sense agenda. Sense compromís més enllà de presentar-se. Però d'alguna manera, ja tens ganes de tornar.",
+    vision_eyebrow:"La Visió", vision_h1:"Un ritual.<br><em>Molts capítols.</em>", vision_body:"Girls Who Walk és una plataforma, no només un club de passejades. El que comença els diumenges al matí és el fonament d'una manera completament diferent de construir comunitat.",
+    card1_label:"Passejada + Cafè", card1_h3:"On tot comença.", card1_body:"El nostre ritual fundacional. Una passejada diumengera seguida d'una hora tranquil·la en un cafè local. Aquest és el nucli. Tot el demés creix des d'aquí.",
+    card2_label:"Passejada + Coworking", card2_h3:"Mou el cos. Llavors mou la feina.", card2_body:"Una passejada diumengera seguida d'una sessió tranquil·la de coworking. Per a dones que volen crear alguna cosa al costat d'una comunitat.",
+    card3_label:"Passejada + Pilates", card3_h3:"Dos tipus de força silenciosa.", card3_body:"Comença a fora amb la nostra passejada matutina i després passa a una sessió privada de Pilates. Un matí de diumenge complet per al teu cos.",
+    card4_label:"Passejada + Xerrades", card4_h3:"Moviment, llavors significat.", card4_body:"La nostra passejada conclou amb una xerrada íntima d'una dona que fa alguna cosa extraordinària. Sense escenari. Només conversa en una sala amb bona llum.",
+    badge_active:"Actiu", badge_soon:"Properament",
+    process_eyebrow:"El Procés", process_h1:"Com unir-se a nosaltres.",
+    step1_title:"Sol·licita", step1_body:"Omple un breu formulari. Explica'ns la teva ciutat i per què vols unir-te. No cal CV — només honetedat.",
+    step2_title:"Revisem", step2_body:"Llegim cada sol·licitud personalment. Mantenim els grups petits intencionadament, per tant ens prenem el nostre temps.",
+    step3_title:"Selecció", step3_body:"Si hi ha un lloc per a tu, ens posarem en contacte amb tots els detalls — hora, punt de trobada i què cal portar (només tu mateixa).",
+    step4_title:"Primera passejada", step4_body:"Presenta't. Hi haurà algú. Quan arribi el cafè, semblará que ens coneixes des de fa mesos.",
+    cta_eyebrow:"Places limitades", cta_h2:"Els teus diumenges al matí<br><em style='color:var(--pink);'>t'esperen.</em>",
+    cta_body:"Obrim places en petits lots. Sol·licita ara i t'avisarem quan n'hi hagi una a la teva ciutat.", cta_free:"Gratuït per sempre.",
+    story_eyebrow:"La Nostra Història", story_h1:"Construït a poc a poc.<br><em style='color:var(--charcoal-mid);'>Amb intenció.</em>",
+    story_start_h2:"Com va començar.", story_start_p1:'Va começar un diumenge, en un parc, amb quatre dones que van dir totes el mateix després: "Hauríem de repetir-ho."',
+    story_start_p2:"Sense apps. Sense grups de xat amb 200 desconegudes. Sense actuació. Només una passejada, una taula en un cafè i la lenta comprensió que allò era quelcom que totes enyoràvem.",
+    story_start_p3:"Girls Who Walk va créixer des d'aquell matí. Continua sent petit perquè és així com funciona millor. La intimitat és el punt.",
+    values_eyebrow:"Els Nostres Valors", values_h1:"El que creiem.",
+    v1_h3:"La lentitud és radical.", v1_body:"No optimitzem la passejada. No hi ha recompte de passos ni objectiu de ritme. La lentitud és intencional — és el que crea espai per a la connexió real.",
+    v2_h3:"El petit és una característica.", v2_body:"Cada grup té un màxim. No perquè vulguem exclusivitat, sinó perquè la intimitat ho requereix. No pots connectar de debò amb 40 persones un diumenge al matí.",
+    v3_h3:"Comunitat per sobre del contingut.", v3_body:"No construïm una estètica d'Instagram. Construïm amistats. El que vius en persona sempre importarà més que el que es publica.",
+    v4_h3:"La curadoria és cura.", v4_body:"Revisem cada sol·licitud personalment. Això no és elitisme — és un acte de cura per a cada dona que es presenta. Volem que l'ambient sigui l'adequat.",
+    v5_h3:"Ciutats, no feeds.", v5_body:"Girls Who Walk creix de ciutat en ciutat, no a través de moments virals. Cada ciutat té el seu propi ritme, els seus llocs habituals, la seva pròpia comunitat.",
+    v6_h3:"Presència per sobre de l'aparença.", v6_body:"No cal arribar a punt per fer networking. No cal un discurs. Vine exactament com estàs un diumenge al matí.",
+    grow_eyebrow:"Com creixem", grow_h2:"A poc a poc, amb seny.",
+    grow_p1:"No intentem convertir-nos en una plataforma amb milions d'usuàries. Intentem construir alguna cosa que encara tingui sentit d'aquí a tres anys.",
+    grow_p2:"Les noves ciutats s'obren quan hi ha una dona sobre el terreny que entén la visió i té la xarxa per fer-ho bé. Sense escala ràpida. Sense model de franquícia. Només confiança.",
+    grow_p3:"Si ets en una ciutat que encara no té Girls Who Walk, explica-ho a la teva sol·licitud. Pot ser que siguis tu qui ho comenci.",
+    wl_eyebrow:"Sol·licita", wl_h1:"Ens encantaria<br><em>conèixer-te.</em>",
+    wl_p1:"Els grups són intencionadament petits. Obrim places per lots i revisem cada sol·licitud personalment.",
+    wl_p2:"Omple el formulari i t'avisarem quan s'obri una plaça a la teva ciutat. És gratuït. Sempre ho serà.",
+    trust_1:"Sense quotes de subscripció", trust_2:"Grups petits i curats", trust_3:"Revisió personal de cada sol·licitud", trust_4:"Properament en noves ciutats",
+    success_label:"Sol·licitud rebuda", success_h2:"Ens posarem en contacte.",
+    success_body:"Gràcies per sol·licitar. Llegim cada enviament personalment. Si hi ha un lloc per a tu, ens posarem en contacte amb tot el que necessites per unir-te a la teva primera passejada.",
+    success_note:"Mentrestant — surt a caminar. Ajuda.",
+    field_name:"Nom complet *", field_email:"Adreça electrònica *", field_city:"La teva ciutat *", field_ig:"Usuari d'Instagram (opcional)", field_why:"Per què vols unir-te? *",
+    err_name:"Si us plau, introdueix el teu nom.", err_email:"Si us plau, introdueix una adreça electrònica vàlida.", err_city:"Si us plau, introdueix la teva ciutat.", err_why:"Comparteix una mica més — almenys una o dues frases.",
+    form_note:"Mai compartim les teves dades. Mai.",
+    footer_tagline:"Alenteix. Presenta't.<br>Caminem juntes.", footer_nav_heading:"Navegar", footer_connect_heading:"Connectar",
+    footer_location:"Ara a Mallorca<br>creixent a poc a poc.", footer_phrase:"No és un club de fitness. És un sentiment."
+  }
+};
+
+/* ══════════════════════════════════════════════════════════
+   LANG ENGINE
+══════════════════════════════════════════════════════════ */
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = LANGS[lang];
+  if (!t) return;
+
+  // Update html lang attribute
+  document.documentElement.lang = lang === 'ca' ? 'ca' : lang;
+
+  // Update all translatable elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      // Use innerHTML to support <br> and <em> tags in translations
+      el.innerHTML = t[key];
+    }
+  });
+
+  // Update placeholder attributes
+  const placeholderMap = {
+    'wl-name':  { en:'Your name', es:'Tu nombre', fr:'Votre prénom', it:'Il tuo nome', de:'Dein Name', ca:'El teu nom' },
+    'wl-email': { en:'your@email.com', es:'tu@correo.com', fr:'votre@email.com', it:'tua@email.com', de:'deine@email.com', ca:'el_teu@email.com' },
+    'wl-city':  { en:'City, Country', es:'Ciudad, País', fr:'Ville, Pays', it:'Città, Paese', de:'Stadt, Land', ca:'Ciutat, País' },
+    'wl-ig':    { en:'@yourhandle', es:'@tuusuario', fr:'@votrepseudo', it:'@tuoaccount', de:'@deinname', ca:'@el_teu_usuari' },
+    'wl-why':   { en:'Tell us a little about yourself…', es:'Cuéntanos un poco sobre ti…', fr:'Parlez-nous un peu de vous…', it:'Raccontaci un po\' di te…', de:'Erzähl uns ein bisschen über dich…', ca:'Explica\'ns una mica sobre tu…' }
+  };
+  Object.entries(placeholderMap).forEach(([id, vals]) => {
+    const el = document.getElementById(id);
+    if (el && vals[lang]) el.placeholder = vals[lang];
+  });
+
+  // Update sending button text if in loading state
+  const btn = document.getElementById('submit-btn');
+  if (btn && btn.disabled) {
+    const sending = { en:'Sending…', es:'Enviando…', fr:'Envoi…', it:'Invio…', de:'Sende…', ca:'Enviant…' };
+    btn.textContent = sending[lang] || 'Sending…';
+  }
+
+  // Active lang button
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   SPA ROUTER
+══════════════════════════════════════════════════════════ */
 function showPage(id) {
   document.querySelectorAll('.page-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-
   const panel = document.getElementById('page-' + id);
-  if (panel) { panel.classList.add('active'); }
-
-  const tabMap = { home: 0, 'our-story': 1, waitlist: 2 };
+  if (panel) panel.classList.add('active');
+  const tabMap = { home:0, 'our-story':1, waitlist:2 };
   const tabs = document.querySelectorAll('.tab');
-  if (tabs[tabMap[id]]) tabs[tabMap[id]].classList.add('active');
-
+  if (tabs[tabMap[id]] !== undefined) tabs[tabMap[id]].classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  setTimeout(initAOS, 100);
+  setTimeout(initAOS, 120);
   return false;
 }
 
-// ── Scroll-triggered animations ──────────────────────────────────────────────
+/* ══════════════════════════════════════════════════════════
+   SCROLL ANIMATIONS
+══════════════════════════════════════════════════════════ */
 function initAOS() {
-  var els = document.querySelectorAll('.aos:not(.visible)');
+  const els = document.querySelectorAll('.aos:not(.visible)');
   if (!els.length) return;
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  els.forEach(function(el) { io.observe(el); });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  els.forEach(el => io.observe(el));
 }
 initAOS();
 
-// ── Waitlist form ────────────────────────────────────────────────────────────
+/* ══════════════════════════════════════════════════════════
+   FORM
+══════════════════════════════════════════════════════════ */
 function submitWaitlist(e) {
   e.preventDefault();
-  var name  = document.getElementById('wl-name').value.trim();
-  var email = document.getElementById('wl-email').value.trim();
-  var city  = document.getElementById('wl-city').value.trim();
-  var why   = document.getElementById('wl-why').value.trim();
-
-  // Reset errors
-  ['name','email','city','why'].forEach(function(f) {
-    document.getElementById('err-' + f).style.display = 'none';
-  });
-
-  var valid = true;
-  if (name.length < 2)             { document.getElementById('err-name').style.display = 'block';  valid = false; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('err-email').style.display = 'block'; valid = false; }
-  if (city.length < 2)             { document.getElementById('err-city').style.display = 'block'; valid = false; }
-  if (why.length < 20)             { document.getElementById('err-why').style.display = 'block';  valid = false; }
-
+  const name  = document.getElementById('wl-name').value.trim();
+  const email = document.getElementById('wl-email').value.trim();
+  const city  = document.getElementById('wl-city').value.trim();
+  const why   = document.getElementById('wl-why').value.trim();
+  ['name','email','city','why'].forEach(f => document.getElementById('err-' + f).style.display = 'none');
+  let valid = true;
+  if (name.length < 2)                               { document.getElementById('err-name').style.display  = 'block'; valid = false; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))   { document.getElementById('err-email').style.display = 'block'; valid = false; }
+  if (city.length < 2)                               { document.getElementById('err-city').style.display  = 'block'; valid = false; }
+  if (why.length < 20)                               { document.getElementById('err-why').style.display   = 'block'; valid = false; }
   if (!valid) return;
-
-  // Simulate async submit
-  var btn = document.getElementById('submit-btn');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-  btn.style.opacity = '0.7';
-
-  setTimeout(function() {
+  const btn = document.getElementById('submit-btn');
+  const sending = { en:'Sending…', es:'Enviando…', fr:'Envoi…', it:'Invio…', de:'Sende…', ca:'Enviant…' };
+  btn.textContent = sending[currentLang] || 'Sending…';
+  btn.disabled = true; btn.style.opacity = '0.65';
+  setTimeout(() => {
     document.getElementById('waitlist-form').style.display = 'none';
-    var success = document.getElementById('form-success');
-    success.style.display = 'block';
-    success.classList.add('fade-up');
-  }, 1200);
+    const s = document.getElementById('form-success');
+    s.style.display = 'block'; s.classList.add('fade-up');
+    // Re-apply translations so success screen shows in correct language
+    setLang(currentLang);
+  }, 1300);
 }
 </script>
-
 </body>
 </html>
