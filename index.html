@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Girls Who Walk — Move With Intention</title>
+<meta name="description" content="A curated Sunday movement for women who walk, connect, and slow down together." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<style>
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --cream:          #F6F2EA;
+  --cream-dark:     #EDE6D9;
+  --cream-border:   #DDD5C6;
+  --pink:           #F4A6B5;
+  --pink-deep:      #E78DA4;
+  --pink-muted:     #F9D0D9;
+  --sage:           #B8C7B1;
+  --charcoal:       #1C1A19;
+  --charcoal-mid:   #5A5550;
+  --charcoal-light: #9A9088;
+  --serif:          'Cormorant Garamond', Georgia, serif;
+  --sans:           'DM Sans', system-ui, sans-serif;
+  --ease:           cubic-bezier(0.16, 1, 0.3, 1);
+  --px:             clamp(1.5rem, 6vw, 5rem);
+}
+
+body {
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+::selection { background: var(--pink-muted); color: var(--charcoal); }
+
+/* ── Header ────────────────────────────────────────────────── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(246,242,234,0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cream-border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem var(--px);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.wordmark { text-decoration: none; }
+.wordmark-title {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+.wordmark-sub {
+  display: block;
+  font-size: 0.6rem;
+  font-family: var(--sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--charcoal-light);
+}
+.nav-desktop { display: flex; align-items: center; gap: 2.5rem; }
+.nav-link {
+  position: relative;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal-mid);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--pink-deep);
+  transition: width 0.3s var(--ease);
+}
+.nav-link:hover { color: var(--charcoal); }
+.nav-link:hover::after { width: 100%; }
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--charcoal);
+  border: 1px solid var(--charcoal);
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(28,26,25,0.1);
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: var(--charcoal-mid);
+  box-shadow: 0 4px 16px rgba(28,26,25,0.18);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  background: transparent;
+  border: 1px solid var(--cream-border);
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.btn-outline:hover {
+  border-color: var(--charcoal);
+  background: rgba(28,26,25,0.04);
+}
+.btn-pink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  background: var(--pink-muted);
+  border: 1px solid var(--pink);
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.btn-pink:hover { background: var(--pink); border-color: var(--pink-deep); }
+
+/* ── Section layout ────────────────────────────────────────── */
+.section {
+  padding: clamp(5rem, 10vw, 9rem) var(--px);
+}
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal-light);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.line-accent {
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--pink-deep);
+  margin-bottom: 1.5rem;
+}
+.divider {
+  height: 1px;
+  background: var(--cream-border);
+}
+
+/* ── Typography ────────────────────────────────────────────── */
+.display {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 10vw, 10.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-weight: 300;
+  color: var(--charcoal);
+}
+.h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5.5vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-weight: 300;
+}
+.h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 3.5vw, 3.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+.h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.5vw, 2.5rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+.body-lg {
+  font-family: var(--sans);
+  font-size: clamp(1.0625rem, 1.5vw, 1.2rem);
+  line-height: 1.75;
+  font-weight: 300;
+  color: var(--charcoal-mid);
+}
+.body {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--charcoal-mid);
+}
+em { font-style: italic; }
+
+/* ── Grid helpers ──────────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+/* ── Hero ──────────────────────────────────────────────────── */
+#hero {
+  padding-top: clamp(9rem, 18vw, 16rem);
+  padding-bottom: clamp(7rem, 14vw, 13rem);
+  padding-left: var(--px);
+  padding-right: var(--px);
+  position: relative;
+  overflow: hidden;
+}
+.hero-orb {
+  position: absolute;
+  top: -20%; right: -10%;
+  width: clamp(300px, 50vw, 700px);
+  height: clamp(300px, 50vw, 700px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244,166,181,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-cta { display: flex; flex-direction: column; gap: 1rem; }
+.hero-bottom {
+  margin-top: clamp(5rem, 10vw, 8rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ── Cards ─────────────────────────────────────────────────── */
+.card {
+  background: var(--cream-dark);
+  border: 1px solid var(--cream-border);
+  border-radius: 4px;
+  padding: 2.5rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  border-color: var(--pink);
+  box-shadow: 0 4px 24px rgba(244,166,181,0.12);
+}
+.card-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.status-badge {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+  font-family: var(--sans);
+}
+
+/* ── Timeline ──────────────────────────────────────────────── */
+.timeline { position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 6.5rem;
+  width: 1px;
+  background: var(--cream-border);
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 3rem;
+  align-items: start;
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-time {
+  text-align: right;
+  padding-right: 2rem;
+  position: relative;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--charcoal-light);
+  padding-top: 0.45rem;
+}
+.timeline-dot {
+  position: absolute;
+  right: -4px; top: 0.45rem;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+/* ── Stats ─────────────────────────────────────────────────── */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--cream-border); }
+.stat-num { font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 0.4rem; }
+.stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal-light); }
+
+/* ── Steps ─────────────────────────────────────────────────── */
+.step-number { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; color: var(--cream-border); line-height: 1; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+.step-line { width: 2rem; height: 1px; background: var(--pink-deep); margin-bottom: 1.25rem; }
+
+/* ── CTA dark section ──────────────────────────────────────── */
+#cta {
+  background: var(--charcoal);
+  padding: clamp(5rem, 10vw, 9rem) var(--px);
+  text-align: center;
+}
+.cta-line { width: 2px; height: 3.5rem; background: rgba(244,166,181,0.4); margin: 0 auto 3rem; }
+
+/* ── Form ──────────────────────────────────────────────────── */
+.form-wrap {
+  background: var(--cream-dark);
+  border: 1px solid var(--cream-border);
+  border-radius: 4px;
+  padding: clamp(2rem, 4vw, 3.5rem);
+}
+.form-field { margin-bottom: 2.25rem; }
+.form-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--charcoal-light);
+  margin-bottom: 0.5rem;
+}
+.form-input, .form-textarea {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--cream-border);
+  padding: 0.875rem 0;
+  outline: none;
+  transition: border-color 0.25s ease;
+  appearance: none;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--charcoal-light); }
+.form-input:focus, .form-textarea:focus { border-bottom-color: var(--charcoal); }
+.form-textarea { resize: vertical; min-height: 110px; line-height: 1.7; }
+.form-divider { height: 1px; background: var(--cream-border); margin: 2.5rem 0; }
+.form-note { margin-top: 1.25rem; font-size: 0.78rem; color: var(--charcoal-light); text-align: center; font-style: italic; font-family: var(--serif); }
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+  background: var(--charcoal);
+  padding: clamp(4rem, 8vw, 7rem) var(--px) 2.5rem;
+}
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
+.footer-brand-name { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 300; color: rgba(246,242,234,0.92); line-height: 1.2; margin-bottom: 1.25rem; }
+.footer-tagline { font-size: 0.8rem; font-style: italic; font-family: var(--serif); color: var(--charcoal-light); line-height: 1.6; max-width: 22ch; }
+.footer-heading { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(154,144,136,0.6); margin-bottom: 1.25rem; font-family: var(--sans); }
+.footer-link { display: block; font-size: 0.875rem; font-weight: 300; color: var(--charcoal-light); text-decoration: none; margin-bottom: 0.75rem; transition: color 0.2s ease; }
+.footer-link:hover { color: rgba(246,242,234,0.92); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid rgba(221,213,198,0.12); }
+.footer-copy { font-size: 0.75rem; color: rgba(154,144,136,0.45); }
+.footer-phrase { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(154,144,136,0.28); font-family: var(--sans); }
+
+/* ── Value cards ───────────────────────────────────────────── */
+.value-dot { width: 2rem; height: 1px; background: var(--pink-deep); margin-bottom: 1.25rem; }
+
+/* ── Trust points ──────────────────────────────────────────── */
+.trust-list { border-top: 1px solid var(--cream-border); padding-top: 2.5rem; margin-top: 2.5rem; }
+.trust-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.875rem; }
+.trust-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--pink-deep); flex-shrink: 0; }
+.trust-text { font-size: 0.875rem; font-weight: 300; color: var(--charcoal-mid); font-family: var(--sans); }
+
+/* ── Page nav tabs ──────────────────────────────────────────── */
+.page-tabs {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem var(--px);
+  background: var(--cream-dark);
+  border-bottom: 1px solid var(--cream-border);
+  overflow-x: auto;
+}
+.tab {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: var(--charcoal-mid);
+}
+.tab:hover { border-color: var(--cream-border); color: var(--charcoal); }
+.tab.active { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+
+/* ── Page panels ────────────────────────────────────────────── */
+.page-panel { display: none; }
+.page-panel.active { display: block; }
+
+/* ── Scroll animations ──────────────────────────────────────── */
+.aos {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+}
+.aos.visible { opacity: 1; transform: translateY(0); }
+.aos-d1 { transition-delay: 0.1s; }
+.aos-d2 { transition-delay: 0.2s; }
+.aos-d3 { transition-delay: 0.3s; }
+.aos-d4 { transition-delay: 0.4s; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid-2    { grid-template-columns: 1fr; }
+  .grid-3    { grid-template-columns: 1fr; }
+  .grid-4    { grid-template-columns: 1fr 1fr; }
+  .grid-2x2  { grid-template-columns: 1fr; }
+  .stats     { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .timeline::before { display: none; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .timeline-time { text-align: left; padding-right: 0; }
+  .timeline-dot  { display: none; }
+  .nav-desktop   { display: none; }
+  .hero-bottom   { display: none; }
+
+  .btn-primary,
+  .btn-outline,
+  .btn-pink {
+    width: 100%;
+    padding: 1rem 2rem;
+    min-height: 48px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-4 { grid-template-columns: 1fr; }
+  .stats  { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+
+/* ── Success state animation ──────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.8s var(--ease) forwards; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <a href="#home" class="wordmark" onclick="showPage('home')">
+      <span class="wordmark-title">Girls Who Walk</span>
+      <span class="wordmark-sub">Move With Intention</span>
+    </a>
+    <nav class="nav-desktop">
+      <a href="#" class="nav-link" onclick="showPage('home'); scrollTo('#about')">About</a>
+      <a href="#" class="nav-link" onclick="showPage('home'); scrollTo('#ritual')">Sunday Ritual</a>
+      <a href="#" class="nav-link" onclick="showPage('our-story')">Our Story</a>
+      <button class="btn-primary" onclick="showPage('waitlist')" style="padding:0.65rem 1.5rem;">Join Waitlist</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE TABS (simulating Next.js routing)
+═══════════════════════════════════════════════════════════ -->
+<div style="padding-top:67px;">
+  <div class="page-tabs">
+    <button class="tab active" onclick="showPage('home')">/ Home</button>
+    <button class="tab" onclick="showPage('our-story')">/about</button>
+    <button class="tab" onclick="showPage('waitlist')">/waitlist</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════════════════════ -->
+<div id="page-home" class="page-panel active">
+
+  <!-- HERO ─────────────────────────────────────────────── -->
+  <section id="home" style="padding-top:clamp(9rem,18vw,15rem);padding-bottom:clamp(7rem,14vw,12rem);padding-left:var(--px);padding-right:var(--px);position:relative;overflow:hidden;">
+    <div class="hero-orb"></div>
+    <div class="inner">
+      <span class="label aos">A Sunday Movement</span>
+
+      <h1 class="display aos aos-d1" style="max-width:16ch;margin-bottom:3.5rem;">
+        Soft Power<br>
+        <em style="color:var(--charcoal-mid)">in Motion.</em>
+      </h1>
+
+      <div class="aos aos-d2" style="display:flex;flex-direction:column;gap:2.5rem;">
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:3rem;">
+          <p class="body-lg" style="max-width:44ch;flex:1;min-width:260px;">
+            Girls Who Walk is a curated Sunday ritual — early morning walks,
+            good coffee, and real conversation with women who show up
+            for themselves and each other.
+          </p>
+          <div class="hero-cta" style="flex-shrink:0;min-width:200px;">
+            <button class="btn-primary" onclick="showPage('waitlist')">Join the Waitlist</button>
+            <a href="#about" class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-bottom aos aos-d3">
+        <div style="width:2.5rem;height:1px;background:var(--cream-border)"></div>
+        <span class="label" style="margin-bottom:0;">Scroll to discover</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT ────────────────────────────────────────────── -->
+  <section id="about" class="section" style="background:var(--cream-dark)">
+    <div class="inner">
+      <div class="grid-2">
+        <div class="aos">
+          <span class="label">The Movement</span>
+          <span class="line-accent"></span>
+          <h2 class="h1" style="max-width:14ch;">More than a walk.</h2>
+        </div>
+        <div class="aos aos-d1">
+          <p class="body-lg" style="margin-bottom:1.75rem;">
+            We live in a world that worships speed. Girls Who Walk is a quiet
+            refusal. A Sunday morning practice of moving slowly, breathing
+            deeply, and connecting with women who choose presence over performance.
+          </p>
+          <p class="body" style="margin-bottom:1.75rem;">
+            There are no leaderboards. No pace requirements. No pressure to arrive
+            perfectly put together. Just you, comfortable shoes, and a small
+            circle of women who also needed this.
+          </p>
+          <p class="body" style="font-style:italic;color:var(--charcoal-mid)">
+            This is your Sunday ritual now.
+          </p>
+          <div class="stats">
+            <div>
+              <p class="stat-num">7:30</p>
+              <p class="stat-label">Sunday<br>Morning</p>
+            </div>
+            <div>
+              <p class="stat-num">~10</p>
+              <p class="stat-label">Women Per<br>Group</p>
+            </div>
+            <div>
+              <p class="stat-num">∞</p>
+              <p class="stat-label">Conversations<br>Worth Having</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SUNDAY RITUAL ─────────────────────────────────────── -->
+  <section id="ritual" class="section">
+    <div class="inner">
+      <div class="aos" style="margin-bottom:clamp(4rem,7vw,7rem)">
+        <span class="label">The Sunday Ritual</span>
+        <h2 class="h1" style="max-width:18ch;">A morning designed <em>to stay with you.</em></h2>
+        <p class="body" style="max-width:40ch;margin-top:1.5rem;">Every Sunday. Same rhythm. Changing only by season, city, and the women who join.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item aos">
+          <div class="timeline-time">7:15 am<div class="timeline-dot"></div></div>
+          <div>
+            <h3 class="h3" style="margin-bottom:0.75rem;">Arrive</h3>
+            <p class="body" style="max-width:52ch;">A quiet corner of the city. You find us by a landmark, not a busy entrance. Small group already gathering. Someone hands you a coffee order slip.</p>
+          </div>
+        </div>
+        <div class="timeline-item aos aos-d1">
+          <div class="timeline-time">7:30 am<div class="timeline-dot"></div></div>
+          <div>
+            <h3 class="h3" style="margin-bottom:0.75rem;">We Walk</h3>
+            <p class="body" style="max-width:52ch;">No phones out. No headphones. A 45–60 minute route through the neighbourhood — scenic, unhurried, and always a little unexpected.</p>
+          </div>
+        </div>
+        <div class="timeline-item aos aos-d2">
+          <div class="timeline-time">8:30 am<div class="timeline-dot"></div></div>
+          <div>
+            <h3 class="h3" style="margin-bottom:0.75rem;">Coffee Together</h3>
+            <p class="body" style="max-width:52ch;">We settle into a local café with good light and real tables. Introductions happen naturally. Conversations run long. Nobody checks the time.</p>
+          </div>
+        </div>
+        <div class="timeline-item aos aos-d3">
+          <div class="timeline-time">10:00 am<div class="timeline-dot"></div></div>
+          <div>
+            <h3 class="h3" style="margin-bottom:0.75rem;">Until Next Sunday</h3>
+            <p class="body" style="max-width:52ch;">That's it. No agenda. No commitment beyond showing up. But somehow, you already feel like coming back.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FUTURE VISION ─────────────────────────────────────── -->
+  <section class="section" style="background:var(--cream-dark)">
+    <div class="inner">
+      <div class="aos" style="margin-bottom:clamp(4rem,7vw,7rem)">
+        <span class="label">The Vision</span>
+        <h2 class="h1" style="max-width:20ch;">One ritual.<br><em>Many chapters.</em></h2>
+        <p class="body-lg" style="max-width:50ch;margin-top:2rem;">
+          Girls Who Walk is a platform, not just a walk club. What begins on
+          Sunday mornings is the foundation for an entirely different way of building community.
+        </p>
+      </div>
+
+      <div class="grid-2x2">
+        <div class="card aos" style="border-color:var(--pink);">
+          <div class="card-tag">
+            <span class="label" style="color:var(--charcoal);margin-bottom:0;">Walk + Coffee</span>
+            <span class="status-badge" style="color:var(--pink-deep);border:1px solid var(--pink);background:transparent;">Active</span>
+          </div>
+          <h3 class="h3" style="margin-bottom:0.875rem;">Where it all begins.</h3>
+          <p class="body">Our founding ritual. A Sunday walk followed by an unhurried hour at a local café. This is the core. Everything else grows from here.</p>
+        </div>
+        <div class="card aos aos-d1">
+          <div class="card-tag">
+            <span class="label" style="margin-bottom:0;">Walk + Cowork</span>
+            <span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);">Coming Soon</span>
+          </div>
+          <h3 class="h3" style="margin-bottom:0.875rem;">Move your body. Then move your work forward.</h3>
+          <p class="body">A Sunday walk followed by a quiet coworking session. For women who want to create something alongside community.</p>
+        </div>
+        <div class="card aos aos-d2">
+          <div class="card-tag">
+            <span class="label" style="margin-bottom:0;">Walk + Pilates</span>
+            <span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);">Coming Soon</span>
+          </div>
+          <h3 class="h3" style="margin-bottom:0.875rem;">Two kinds of quiet strength.</h3>
+          <p class="body">Begin outside with our morning walk, then transition to a private Pilates session. A full Sunday morning for your body.</p>
+        </div>
+        <div class="card aos aos-d3">
+          <div class="card-tag">
+            <span class="label" style="margin-bottom:0;">Walk + Talks</span>
+            <span class="status-badge" style="color:var(--charcoal-light);border:1px solid var(--cream-border);">Coming Soon</span>
+          </div>
+          <h3 class="h3" style="margin-bottom:0.875rem;">Movement, then meaning.</h3>
+          <p class="body">Our walk concludes with an intimate talk from a woman doing something remarkable. No stage. Just conversation in a room with good light.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HOW IT WORKS ──────────────────────────────────────── -->
+  <section class="section">
+    <div class="inner">
+      <div class="aos" style="margin-bottom:clamp(4rem,7vw,7rem)">
+        <span class="label">The Process</span>
+        <h2 class="h1" style="max-width:16ch;">How to join us.</h2>
+      </div>
+
+      <div class="grid-4">
+        <div class="aos">
+          <p class="step-number">01</p>
+          <div class="step-line"></div>
+          <h3 class="h3" style="margin-bottom:0.875rem;">Apply</h3>
+          <p class="body">Fill out a short form. Tell us your city and a little about why you want to join. No CV required — just honesty.</p>
+        </div>
+        <div class="aos aos-d1">
+          <p class="step-number">02</p>
+          <div class="step-line"></div>
+          <h3 class="h3" style="margin-bottom:0.875rem;">Reviewed</h3>
+          <p class="body">We read every application personally. We keep groups small intentionally, so we take our time.</p>
+        </div>
+        <div class="aos aos-d2">
+          <p class="step-number">03</p>
+          <div class="step-line"></div>
+          <h3 class="h3" style="margin-bottom:0.875rem;">Selected</h3>
+          <p class="body">If there's a spot for you, we'll reach out with all the details — time, meeting point, and what to bring (just yourself).</p>
+        </div>
+        <div class="aos aos-d3">
+          <p class="step-number">04</p>
+          <div class="step-line"></div>
+          <h3 class="h3" style="margin-bottom:0.875rem;">First Walk</h3>
+          <p class="body">Show up. Someone will be there. By the time coffee arrives, it will feel like you've known us for months.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA ──────────────────────────────────────────────── -->
+  <section id="cta" class="section">
+    <div class="inner" style="max-width:60ch;margin:0 auto;text-align:center;">
+      <div class="cta-line aos"></div>
+      <span class="label" style="color:rgba(154,144,136,0.8);">Limited Spots</span>
+      <h2 class="aos aos-d1" style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:rgba(246,242,234,0.95);margin-bottom:2rem;margin-top:1.5rem;">
+        Your Sunday mornings<br><em style="color:var(--pink)">are waiting.</em>
+      </h2>
+      <p class="body" style="color:var(--charcoal-light);margin-bottom:3rem;max-width:42ch;margin-left:auto;margin-right:auto;">
+        We open spots in small batches. Apply now and we'll reach out when something opens in your city.
+      </p>
+      <button class="btn-pink aos aos-d2" onclick="showPage('waitlist')" style="font-size:0.78rem;padding:1.1rem 3rem;">Apply to Join</button>
+      <p style="margin-top:1.5rem;font-size:0.8rem;font-style:italic;font-family:var(--serif);color:rgba(154,144,136,0.45);">Free to join. Always will be.</p>
+    </div>
+  </section>
+
+</div>
+<!-- end #page-home -->
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE: OUR STORY (/about)
+═══════════════════════════════════════════════════════════ -->
+<div id="page-our-story" class="page-panel">
+
+  <section class="section" style="padding-top:clamp(5rem,10vw,8rem);">
+    <div class="inner">
+      <span class="label aos">Our Story</span>
+      <h1 class="display aos aos-d1" style="max-width:14ch;margin-bottom:0;">
+        Built slowly.<br><em style="color:var(--charcoal-mid)">On purpose.</em>
+      </h1>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section" style="background:var(--cream-dark)">
+    <div class="inner">
+      <div class="grid-2">
+        <div class="aos">
+          <span class="line-accent"></span>
+          <h2 class="h2">How it started.</h2>
+        </div>
+        <div class="aos aos-d1">
+          <p class="body-lg" style="margin-bottom:1.75rem;">
+            It started with one Sunday, one park, and four women who all said the same thing afterwards: "We should do this again."
+          </p>
+          <p class="body" style="margin-bottom:1.75rem;">
+            No apps. No group chats with 200 strangers. No performance.
+            Just a walk, a table at a café, and the slow realisation that this was something we'd all been missing.
+          </p>
+          <p class="body">
+            Girls Who Walk grew from that one morning. It remains small because that's how it works best. The intimacy is the point.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="inner">
+      <div class="aos" style="margin-bottom:clamp(4rem,7vw,6rem)">
+        <span class="label">Our Values</span>
+        <h2 class="h1" style="max-width:16ch;">What we believe.</h2>
+      </div>
+      <div class="grid-3" style="gap:2.5rem;">
+        <div class="aos"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Slowness is radical.</h3><p class="body">We don't optimise the walk. There's no step count, no pace goal. The slowness is intentional — it's what makes space for real connection.</p></div>
+        <div class="aos aos-d1"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Small is a feature.</h3><p class="body">Every group has a maximum. Not because we want exclusivity, but because intimacy requires it. You can't truly connect with 40 people on a Sunday morning.</p></div>
+        <div class="aos aos-d2"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Community over content.</h3><p class="body">We are not building an Instagram aesthetic. We are building friendships. What you experience in person will always matter more than what gets posted.</p></div>
+        <div class="aos"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Curation is care.</h3><p class="body">We review every application personally. This isn't gatekeeping — it's an act of care for every woman who shows up. We want the room to feel right.</p></div>
+        <div class="aos aos-d1"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Cities, not feeds.</h3><p class="body">Girls Who Walk grows city by city, not through viral moments. Each city gets its own rhythm, its own regular spots, its own community.</p></div>
+        <div class="aos aos-d2"><div class="value-dot"></div><h3 class="h3" style="margin-bottom:0.875rem;">Presence over performance.</h3><p class="body">You don't need to arrive ready to network. You don't need a pitch. Come exactly as you are on a Sunday morning.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section" style="background:var(--cream-dark)">
+    <div class="inner">
+      <div class="grid-2">
+        <div class="aos">
+          <span class="label">How We Grow</span>
+          <span class="line-accent"></span>
+          <h2 class="h2" style="max-width:14ch;">Slow, deliberate, rooted.</h2>
+        </div>
+        <div class="aos aos-d1">
+          <p class="body-lg" style="margin-bottom:1.75rem;">
+            We are not trying to become a platform with millions of users. We are trying to build something that still feels meaningful in three years.
+          </p>
+          <p class="body" style="margin-bottom:1.75rem;">
+            New cities open when there's a woman on the ground who understands the vision and has the network to do it right. No rapid scaling. No franchise model. Just trust.
+          </p>
+          <p class="body" style="margin-bottom:2.5rem;">
+            If you're in a city that doesn't have Girls Who Walk yet, tell us on your waitlist application. You might be the one who starts it.
+          </p>
+          <button class="btn-primary" onclick="showPage('waitlist')">Join the Waitlist</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<!-- end #page-our-story -->
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE: WAITLIST (/waitlist)
+═══════════════════════════════════════════════════════════ -->
+<div id="page-waitlist" class="page-panel">
+  <section class="section" style="padding-top:clamp(5rem,10vw,8rem)">
+    <div class="inner">
+      <div class="grid-2" style="gap:clamp(3rem,6vw,8rem)">
+
+        <!-- Left: context -->
+        <div class="aos">
+          <span class="label">Apply</span>
+          <span class="line-accent"></span>
+          <h1 style="font-family:var(--serif);font-size:clamp(2.75rem,6vw,5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:2.5rem;max-width:14ch;">
+            We'd love to <em>meet you.</em>
+          </h1>
+          <p class="body-lg" style="margin-bottom:2rem;">
+            Groups are intentionally small. We open spots in batches and review every application personally.
+          </p>
+          <p class="body" style="margin-bottom:2.5rem;">
+            Fill in the form and we'll reach out when something opens in your city. It's free. It always will be.
+          </p>
+          <div class="trust-list">
+            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text">No subscription fees</span></div>
+            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text">Small, curated groups</span></div>
+            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text">Personal review of every application</span></div>
+            <div class="trust-item"><span class="trust-dot"></span><span class="trust-text">Expanding to new cities soon</span></div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="aos aos-d1">
+          <div class="form-wrap" id="form-wrap">
+
+            <!-- Success state (hidden by default) -->
+            <div id="form-success" style="display:none;text-align:center;padding:3rem 1rem;" class="fade-up">
+              <div style="width:5rem;height:5rem;border-radius:50%;background:var(--pink-muted);border:1px solid var(--pink);display:flex;align-items:center;justify-content:center;margin:0 auto 2.5rem;font-size:1.5rem;">✦</div>
+              <span class="label" style="margin-bottom:1.5rem;display:block;">Application Received</span>
+              <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;margin-bottom:1.5rem;">We'll be in touch.</h2>
+              <p class="body" style="max-width:40ch;margin:0 auto;">Thank you for applying. We read every submission personally. If there's a spot for you, we'll reach out with everything you need to join your first walk.</p>
+              <p style="margin-top:2rem;font-size:0.85rem;font-style:italic;font-family:var(--serif);color:var(--charcoal-light)">In the meantime — go for a walk. It helps.</p>
+            </div>
+
+            <!-- Form -->
+            <form id="waitlist-form" onsubmit="submitWaitlist(event)" novalidate>
+              <div class="form-field">
+                <label class="form-label" for="wl-name">Full Name *</label>
+                <input class="form-input" id="wl-name" type="text" placeholder="Your name" autocomplete="name" required />
+                <p class="form-error" id="err-name" style="display:none;font-size:0.8rem;color:#B85A64;margin-top:0.35rem;font-style:italic;">Please enter your name.</p>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="wl-email">Email Address *</label>
+                <input class="form-input" id="wl-email" type="email" placeholder="your@email.com" autocomplete="email" required />
+                <p class="form-error" id="err-email" style="display:none;font-size:0.8rem;color:#B85A64;margin-top:0.35rem;font-style:italic;">Please enter a valid email address.</p>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="wl-city">Your City *</label>
+                <input class="form-input" id="wl-city" type="text" placeholder="City, Country" autocomplete="address-level2" required />
+                <p class="form-error" id="err-city" style="display:none;font-size:0.8rem;color:#B85A64;margin-top:0.35rem;font-style:italic;">Please enter your city.</p>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="wl-ig">Instagram Handle (optional)</label>
+                <input class="form-input" id="wl-ig" type="text" placeholder="@yourhandle" />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="wl-why">Why do you want to join? *</label>
+                <textarea class="form-textarea" id="wl-why" placeholder="Tell us a little about yourself and what draws you to this..." required></textarea>
+                <p class="form-error" id="err-why" style="display:none;font-size:0.8rem;color:#B85A64;margin-top:0.35rem;font-style:italic;">Please share a bit more — at least a sentence or two.</p>
+              </div>
+              <div class="form-divider"></div>
+              <button type="submit" class="btn-primary" id="submit-btn" style="width:100%;">Submit Application</button>
+              <p class="form-note">We never share your data. Ever.</p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+<!-- end #page-waitlist -->
+
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER (shared)
+═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="inner">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand-name">Girls Who Walk</p>
+        <p class="footer-tagline">Slow down. Show up.<br>Walk together.</p>
+      </div>
+      <div>
+        <p class="footer-heading">Navigate</p>
+        <a href="#" class="footer-link" onclick="showPage('home')">Home</a>
+        <a href="#" class="footer-link" onclick="showPage('home');document.getElementById('ritual').scrollIntoView({behavior:'smooth'})">Sunday Ritual</a>
+        <a href="#" class="footer-link" onclick="showPage('our-story')">Our Story</a>
+        <a href="#" class="footer-link" onclick="showPage('waitlist')">Join Waitlist</a>
+      </div>
+      <div>
+        <p class="footer-heading">Connect</p>
+        <a href="#" class="footer-link">@girlswhowalk</a>
+        <a href="#" class="footer-link">hello@girlswhowalk.com</a>
+        <p style="font-size:0.8rem;font-style:italic;font-family:var(--serif);color:rgba(154,144,136,0.5);margin-top:0.75rem;">Currently in Madrid — growing slowly</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Girls Who Walk. All rights reserved.</p>
+      <p class="footer-phrase">Not a fitness club. A feeling.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Simple SPA page switcher ─────────────────────────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+  const panel = document.getElementById('page-' + id);
+  if (panel) { panel.classList.add('active'); }
+
+  const tabMap = { home: 0, 'our-story': 1, waitlist: 2 };
+  const tabs = document.querySelectorAll('.tab');
+  if (tabs[tabMap[id]]) tabs[tabMap[id]].classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(initAOS, 100);
+  return false;
+}
+
+// ── Scroll-triggered animations ──────────────────────────────────────────────
+function initAOS() {
+  var els = document.querySelectorAll('.aos:not(.visible)');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { io.observe(el); });
+}
+initAOS();
+
+// ── Waitlist form ────────────────────────────────────────────────────────────
+function submitWaitlist(e) {
+  e.preventDefault();
+  var name  = document.getElementById('wl-name').value.trim();
+  var email = document.getElementById('wl-email').value.trim();
+  var city  = document.getElementById('wl-city').value.trim();
+  var why   = document.getElementById('wl-why').value.trim();
+
+  // Reset errors
+  ['name','email','city','why'].forEach(function(f) {
+    document.getElementById('err-' + f).style.display = 'none';
+  });
+
+  var valid = true;
+  if (name.length < 2)             { document.getElementById('err-name').style.display = 'block';  valid = false; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('err-email').style.display = 'block'; valid = false; }
+  if (city.length < 2)             { document.getElementById('err-city').style.display = 'block'; valid = false; }
+  if (why.length < 20)             { document.getElementById('err-why').style.display = 'block';  valid = false; }
+
+  if (!valid) return;
+
+  // Simulate async submit
+  var btn = document.getElementById('submit-btn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  setTimeout(function() {
+    document.getElementById('waitlist-form').style.display = 'none';
+    var success = document.getElementById('form-success');
+    success.style.display = 'block';
+    success.classList.add('fade-up');
+  }, 1200);
+}
+</script>
+
+</body>
+</html>
